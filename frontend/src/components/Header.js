@@ -101,18 +101,64 @@ const Header = () => {
                 {item.label}
               </motion.button>
             ))}
+            
+            {/* Bouton Panier */}
+            <motion.button
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              onClick={toggleCart}
+              className={`relative p-2 rounded-lg transition-colors duration-200 ${
+                isScrolled 
+                  ? 'text-gray-700 hover:text-amber-600' 
+                  : 'text-white hover:text-amber-200'
+              }`}
+            >
+              <ShoppingBag className="w-6 h-6" />
+              {getTotalItems() > 0 && (
+                <motion.span
+                  initial={{ scale: 0 }}
+                  animate={{ scale: 1 }}
+                  className="absolute -top-1 -right-1 bg-red-500 text-white text-xs rounded-full w-5 h-5 flex items-center justify-center font-bold"
+                >
+                  {getTotalItems()}
+                </motion.span>
+              )}
+            </motion.button>
           </nav>
 
-          {/* Mobile Menu Button */}
-          <motion.button
-            whileTap={{ scale: 0.95 }}
-            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-            className={`md:hidden p-2 rounded-lg ${
-              isScrolled ? 'text-gray-700' : 'text-white'
-            }`}
-          >
-            {isMobileMenuOpen ? <X size={24} /> : <MenuIcon size={24} />}
-          </motion.button>
+          {/* Mobile Menu Button + Cart */}
+          <div className="md:hidden flex items-center space-x-3">
+            {/* Bouton Panier Mobile */}
+            <motion.button
+              whileTap={{ scale: 0.95 }}
+              onClick={toggleCart}
+              className={`relative p-2 rounded-lg ${
+                isScrolled ? 'text-gray-700' : 'text-white'
+              }`}
+            >
+              <ShoppingBag className="w-6 h-6" />
+              {getTotalItems() > 0 && (
+                <motion.span
+                  initial={{ scale: 0 }}
+                  animate={{ scale: 1 }}
+                  className="absolute -top-1 -right-1 bg-red-500 text-white text-xs rounded-full w-5 h-5 flex items-center justify-center font-bold"
+                >
+                  {getTotalItems()}
+                </motion.span>
+              )}
+            </motion.button>
+
+            {/* Mobile Menu Button */}
+            <motion.button
+              whileTap={{ scale: 0.95 }}
+              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+              className={`p-2 rounded-lg ${
+                isScrolled ? 'text-gray-700' : 'text-white'
+              }`}
+            >
+              {isMobileMenuOpen ? <X size={24} /> : <MenuIcon size={24} />}
+            </motion.button>
+          </div>
         </div>
 
         {/* Mobile Navigation */}
