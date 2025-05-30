@@ -22,11 +22,45 @@ const Contact = () => {
     });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log('Contact form submitted:', formData);
-    alert('Votre message a été envoyé avec succès ! Nous vous répondrons rapidement.');
-    setFormData({ name: '', email: '', phone: '', subject: '', message: '' });
+    setIsSubmitting(true);
+    setSubmitStatus({ type: '', message: '' });
+
+    try {
+      // Tentative d'envoi via EmailJS
+      const result = await sendContactMessage(formData);
+      
+      if (result.success) {
+        setSubmitStatus({ 
+          type: 'success', 
+          message: 'Votre message a été envoyé avec succès ! Nous vous répondrons dans les plus brefs délais.' 
+        });
+        
+        // Reset du formulaire
+        setFormData({ name: '', email: '', phone: '', subject: '', message: '' });
+      } else {
+        // Fallback avec mailto
+        const mailtoLink = createMailtoLink(formData, false);
+        window.location.href = mailtoLink;
+        
+        setSubmitStatus({ 
+          type: 'info', 
+          message: 'Votre client mail va s\'ouvrir avec votre message pré-rempli. Envoyez-le pour finaliser votre demande.' 
+        });
+      }
+    } catch (error) {
+      // Fallback avec mailto en cas d'erreur
+      const mailtoLink = createMailtoLink(formData, false);
+      window.location.href = mailtoLink;
+      
+      setSubmitStatus({ 
+        type: 'info', 
+        message: 'Votre client mail va s\'ouvrir avec votre message pré-rempli. Envoyez-le pour finaliser votre demande.' 
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const contactInfo = [
