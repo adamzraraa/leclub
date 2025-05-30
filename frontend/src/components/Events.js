@@ -94,6 +94,24 @@ const Events = () => {
     }
   };
 
+  // Fonctions pour la galerie de mariages
+  const openGallery = (index = 0) => {
+    setCurrentImageIndex(index);
+    setIsGalleryOpen(true);
+  };
+
+  const closeGallery = () => {
+    setIsGalleryOpen(false);
+  };
+
+  const nextImage = () => {
+    setCurrentImageIndex((prev) => (prev + 1) % mariagePhotos.length);
+  };
+
+  const prevImage = () => {
+    setCurrentImageIndex((prev) => (prev - 1 + mariagePhotos.length) % mariagePhotos.length);
+  };
+
   const eventTypes = [
     {
       icon: <Heart className="w-8 h-8" />,
