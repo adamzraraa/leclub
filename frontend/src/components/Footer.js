@@ -94,14 +94,35 @@ const Footer = () => {
             >
               {/* Logo */}
               <div className="flex items-center mb-6">
-                <div className="w-12 h-12 bg-gradient-to-br from-amber-600 to-red-600 rounded-full flex items-center justify-center mr-3">
-                  <div className="w-8 h-8 bg-white rounded-full flex items-center justify-center">
-                    <div className="w-4 h-4 bg-gradient-to-br from-amber-600 to-red-600 rounded-full"></div>
+                {/* Moroccan-inspired logo */}
+                <div className="relative w-12 h-12 mr-3">
+                  {/* Outer decorative ring */}
+                  <div className="absolute inset-0 bg-gradient-to-br from-amber-600 to-red-600 rounded-full"></div>
+                  
+                  {/* Inner white circle */}
+                  <div className="absolute inset-1 bg-white rounded-full flex items-center justify-center">
+                    {/* Moroccan 8-pointed star */}
+                    <div className="relative w-6 h-6">
+                      {/* Main star shape using CSS */}
+                      <div className="absolute inset-0 bg-gradient-to-br from-amber-600 to-red-600 transform rotate-0" 
+                           style={{
+                             clipPath: 'polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%)'
+                           }}>
+                      </div>
+                      
+                      {/* Decorative center dot */}
+                      <div className="absolute top-1/2 left-1/2 w-1.5 h-1.5 bg-amber-700 rounded-full transform -translate-x-1/2 -translate-y-1/2"></div>
+                    </div>
                   </div>
+                  
+                  {/* Small decorative elements around the logo */}
+                  <div className="absolute -top-1 -right-1 w-2 h-2 bg-amber-400 rounded-full opacity-80"></div>
+                  <div className="absolute -bottom-1 -left-1 w-1.5 h-1.5 bg-red-400 rounded-full opacity-80"></div>
                 </div>
+                
                 <div>
-                  <h3 className="font-bold text-xl text-white">Le Restaurant</h3>
-                  <p className="text-amber-400 font-medium">Le Club</p>
+                  <h3 className="font-bold text-xl text-white font-display">Le Restaurant</h3>
+                  <p className="text-amber-400 font-medium italic">Le Club</p>
                 </div>
               </div>
 
