@@ -65,6 +65,64 @@ const Menu = () => {
         popular: false
       }
     ],
+    semaine: [
+      {
+        name: "Lundi - Tajines du Chef",
+        description: "Harmonie de saveurs avec tajine d'agneau aux pruneaux et amandes ou tajine de poulet au citron confit",
+        price: "15,90€",
+        image: "https://images.unsplash.com/photo-1517315314851-5d0c36a36e02",
+        spicy: false,
+        popular: true
+      },
+      {
+        name: "Lundi - Grillades Assortiment",
+        description: "Brochettes d'agneau, kefta, poulet mariné et bien plus pour tous les goûts",
+        price: "19,90€",
+        image: "https://images.pexels.com/photos/28902897/pexels-photo-28902897.jpeg",
+        spicy: false,
+        popular: true
+      },
+      {
+        name: "Mardi - Tajines de la Mer",
+        description: "Voyage gustatif unique mêlant trésors de l'océan aux épices, tajine de poisson aux légumes ou fruits de mer chermoula",
+        price: "15,90€",
+        image: "https://images.unsplash.com/photo-1519624014191-508652cbd7b5",
+        spicy: false,
+        popular: true
+      },
+      {
+        name: "Mardi - Grillades Océanes",
+        description: "Brochettes de poissons grillés, sardines marines selon l'arrivage du jour, fraîcheur garantie",
+        price: "19,90€",
+        image: "https://images.unsplash.com/photo-1534121222821-9e2e2936f059",
+        spicy: false,
+        popular: false
+      },
+      {
+        name: "Mercredi - Grillades Poulet",
+        description: "Poulet braisé au feu de bois ou farci, accompagné de frites ou légumes sautés",
+        price: "12,90€",
+        image: "https://images.unsplash.com/photo-1555939594-58d7cb561ad1",
+        spicy: false,
+        popular: false
+      },
+      {
+        name: "Jeudi - Spécialité Tangia Marrakech",
+        description: "Savoureuse tangia de Marrakech vous attend, promettant une expérience culinaire riche en goût",
+        price: "19,90€",
+        image: "https://images.pexels.com/photos/1618929/pexels-photo-1618929.jpeg",
+        spicy: true,
+        popular: true
+      },
+      {
+        name: "Vendredi - Couscous Royal",
+        description: "Festin royal offrant des options pour tous, du couscous royal au couscous de la semaine en beauté",
+        price: "19,90€",
+        image: "https://images.pexels.com/photos/29594950/pexels-photo-29594950.jpeg",
+        spicy: false,
+        popular: true
+      }
+    ],
     entrees: [
       {
         name: "Pastilla au Poulet",
