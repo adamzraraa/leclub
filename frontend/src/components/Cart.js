@@ -208,7 +208,7 @@ Merci de confirmer la disponibilité.`;
                   <motion.button
                     whileHover={{ scale: 1.02 }}
                     whileTap={{ scale: 0.98 }}
-                    onClick={handleCheckout}
+                    onClick={handleShowCheckoutForm}
                     className="w-full bg-gradient-to-r from-amber-600 to-red-600 text-white py-4 rounded-xl font-semibold text-lg shadow-lg hover:shadow-xl transition-all duration-300"
                   >
                     Commander sur WhatsApp
