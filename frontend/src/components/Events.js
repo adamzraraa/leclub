@@ -363,7 +363,7 @@ const Events = () => {
                   <Mail className="w-6 h-6 text-amber-600 mr-4" />
                   <div>
                     <p className="font-semibold text-gray-800">Email</p>
-                    <p className="text-gray-600">events@restaurantleclub.fr</p>
+                    <p className="text-gray-600">restaurant.traiteur.leclub@gmail.com</p>
                   </div>
                 </div>
                 
