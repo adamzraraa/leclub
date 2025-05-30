@@ -87,7 +87,7 @@ const Testimonials = () => {
         >
           {[
             { number: "4.9", label: "Note Moyenne", suffix: "/5" },
-            { number: "500+", label: "Avis Clients", suffix: "" },
+            { number: "100+", label: "Avis Clients", suffix: "" },
             { number: "98%", label: "Satisfaction", suffix: "" },
             { number: "50+", label: "Événements/An", suffix: "" }
           ].map((stat, index) => (
