@@ -16,50 +16,50 @@ const Menu = () => {
   const menuItems = {
     brunch: [
       {
-        name: "Petit-Déjeuner Royal Marocain",
-        description: "Assortiment de pâtisseries marocaines, msemen, miel, beurre, fromage et confiture d'orange",
-        price: "22€",
+        name: "Brunch Samedi - Menu Complet",
+        description: "Brunch marocain authentique : assortiment de pains locaux, harcha, baghrir, tajine khliaa aux œufs",
+        price: "18,00€",
         image: "https://images.pexels.com/photos/14017961/pexels-photo-14017961.jpeg",
         spicy: false,
         popular: true
       },
       {
-        name: "Crêpes Marocaines aux Amandes",
-        description: "Crêpes traditionnelles garnies d'amandes effilées, miel et cannelle",
-        price: "16€",
+        name: "Pain à l'Orge & Miel",
+        description: "Pain à l'orge avec texture dense et saveur de noisette, accompagné de miel et olives noires ou vertes",
+        price: "Inclus",
+        image: "https://images.unsplash.com/photo-1598258398450-1011a5b05a41",
+        spicy: false,
+        popular: true
+      },
+      {
+        name: "Harcha - Galette de Semoule",
+        description: "Galette de semoule se distinguant par sa croûte croustillante et son intérieur tendre",
+        price: "Inclus",
+        image: "https://images.pexels.com/photos/7631152/pexels-photo-7631152.jpeg",
+        spicy: false,
+        popular: false
+      },
+      {
+        name: "Baghrir - Crêpes Mille Trous",
+        description: "Crêpes traditionnelles avec texture aérée qui absorbe le miel doré et les confitures maison",
+        price: "Inclus",
         image: "https://images.pexels.com/photos/32292781/pexels-photo-32292781.jpeg",
         spicy: false,
         popular: true
       },
       {
-        name: "Omelette aux Herbes Fraîches",
-        description: "Omelette moelleuse aux herbes du jardin, tomates et olives marocaines",
-        price: "14€",
-        image: "https://images.pexels.com/photos/18077172/pexels-photo-18077172.jpeg",
-        spicy: false,
-        popular: false
-      },
-      {
-        name: "Tartines à l'Avocat et Dukkah",
-        description: "Pain artisanal, avocat, mélange d'épices dukkah et huile d'argan",
-        price: "13€",
-        image: "https://images.unsplash.com/photo-1714628405052-8598f9fed4c7",
-        spicy: false,
-        popular: false
-      },
-      {
-        name: "Shakshuka Marocaine",
-        description: "Œufs pochés dans une sauce tomate épicée aux poivrons et coriandre",
-        price: "18€",
-        image: "https://images.pexels.com/photos/18160499/pexels-photo-18160499.jpeg",
+        name: "Tajine Khliaa aux Œufs",
+        description: "Mélange de saveurs robustes, viande séchée avec intensité salée équilibrée par œufs",
+        price: "Inclus",
+        image: "https://images.pexels.com/photos/30068444/pexels-photo-30068444.jpeg",
         spicy: true,
-        popular: true
+        popular: false
       },
       {
-        name: "Café des Épices + Pâtisseries",
-        description: "Café parfumé à la cardamome servi avec une sélection de petites pâtisseries",
-        price: "12€",
-        image: "https://images.pexels.com/photos/8525684/pexels-photo-8525684.jpeg",
+        name: "Soupe de Semoule au Miel",
+        description: "Soupe de semoule au miel ou à l'anis pour conclure le repas en douceur",
+        price: "Inclus",
+        image: "https://images.pexels.com/photos/17023410/pexels-photo-17023410.jpeg",
         spicy: false,
         popular: false
       }
