@@ -539,6 +539,108 @@ const Events = () => {
         </motion.div>
       </div>
     </section>
+
+      {/* Galerie Modale pour Mariages Traditionnels */}
+      <AnimatePresence>
+        {isGalleryOpen && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="fixed inset-0 bg-black/95 z-50 flex items-center justify-center p-4"
+            onClick={closeGallery}
+          >
+            <motion.div
+              initial={{ scale: 0.8, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              exit={{ scale: 0.8, opacity: 0 }}
+              className="relative max-w-4xl max-h-[90vh] bg-white rounded-2xl overflow-hidden"
+              onClick={(e) => e.stopPropagation()}
+            >
+              {/* Bouton Fermer */}
+              <button
+                onClick={closeGallery}
+                className="absolute top-4 right-4 z-10 bg-black/50 backdrop-blur-sm text-white p-3 rounded-full hover:bg-black/70 transition-colors duration-200"
+              >
+                <X className="w-6 h-6" />
+              </button>
+              
+              {/* Navigation précédent */}
+              {mariagePhotos.length > 1 && (
+                <button
+                  onClick={prevImage}
+                  className="absolute left-4 top-1/2 transform -translate-y-1/2 z-10 bg-black/50 backdrop-blur-sm text-white p-3 rounded-full hover:bg-black/70 transition-colors duration-200"
+                >
+                  <ChevronLeft className="w-6 h-6" />
+                </button>
+              )}
+              
+              {/* Navigation suivant */}
+              {mariagePhotos.length > 1 && (
+                <button
+                  onClick={nextImage}
+                  className="absolute right-4 top-1/2 transform -translate-y-1/2 z-10 bg-black/50 backdrop-blur-sm text-white p-3 rounded-full hover:bg-black/70 transition-colors duration-200"
+                >
+                  <ChevronRight className="w-6 h-6" />
+                </button>
+              )}
+              
+              {/* Image principale */}
+              <div className="relative">
+                <img
+                  src={mariagePhotos[currentImageIndex].src}
+                  alt={mariagePhotos[currentImageIndex].alt}
+                  className="w-full h-[70vh] object-cover"
+                />
+                
+                {/* Informations de l'image */}
+                <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent p-6">
+                  <h3 className="text-white text-xl font-semibold mb-2">
+                    Mariage Traditionnel Marocain
+                  </h3>
+                  <p className="text-amber-200 text-sm mb-2">
+                    {mariagePhotos[currentImageIndex].description}
+                  </p>
+                  <div className="flex items-center justify-between">
+                    <span className="bg-amber-600 text-white px-3 py-1 rounded-full text-xs font-semibold">
+                      Photo {currentImageIndex + 1} sur {mariagePhotos.length}
+                    </span>
+                    <span className="text-amber-200 text-sm">
+                      Événements réalisés par Restaurant Le Club
+                    </span>
+                  </div>
+                </div>
+              </div>
+              
+              {/* Miniatures */}
+              {mariagePhotos.length > 1 && (
+                <div className="bg-gray-100 p-4">
+                  <div className="flex justify-center space-x-3">
+                    {mariagePhotos.map((photo, index) => (
+                      <button
+                        key={index}
+                        onClick={() => setCurrentImageIndex(index)}
+                        className={`w-16 h-16 rounded-lg overflow-hidden border-2 transition-all duration-200 ${
+                          index === currentImageIndex 
+                            ? 'border-amber-600 scale-110' 
+                            : 'border-gray-300 hover:border-amber-400'
+                        }`}
+                      >
+                        <img
+                          src={photo.src}
+                          alt={photo.alt}
+                          className="w-full h-full object-cover"
+                        />
+                      </button>
+                    ))}
+                  </div>
+                </div>
+              )}
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </section>
   );
 };
 
