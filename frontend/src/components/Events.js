@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import { motion } from 'framer-motion';
-import { Heart, Users, Calendar, Star, Phone, Mail, CheckCircle, AlertCircle, Loader } from 'lucide-react';
+import { motion, AnimatePresence } from 'framer-motion';
+import { Heart, Users, Calendar, Star, Phone, Mail, CheckCircle, AlertCircle, Loader, X, ChevronLeft, ChevronRight } from 'lucide-react';
 import { sendEventQuote, createMailtoLink } from '../services/emailService';
 
 const Events = () => {
