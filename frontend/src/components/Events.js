@@ -118,7 +118,9 @@ const Events = () => {
       title: "Mariages Traditionnels",
       description: "Célébrez votre union avec l'élégance et les traditions marocaines. Menu personnalisé, décoration authentique.",
       features: ["Décoration traditionnelle", "Menu sur mesure", "Service personnalisé", "Musique andalouse"],
-      image: "https://images.pexels.com/photos/14547414/pexels-photo-14547414.jpeg"
+      image: "https://images.pexels.com/photos/14547414/pexels-photo-14547414.jpeg",
+      clickable: true, // Nouvelle propriété pour indiquer que c'est cliquable
+      galleryAction: () => openGallery(0) // Action à exécuter au clic
     },
     {
       icon: <Users className="w-8 h-8" />,
