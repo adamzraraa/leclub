@@ -219,7 +219,7 @@ const Menu = () => {
         name: "Boissons Gazeuses",
         description: "Sélection de sodas et boissons gazeuses rafraîchissantes",
         price: "2,80€",
-        image: "https://images.pexels.com/photos/8952409/pexels-photo-8952409.jpeg",
+        image: "https://images.pexels.com/photos/8880727/pexels-photo-8880727.jpeg",
         spicy: false,
         popular: false
       },
@@ -227,7 +227,7 @@ const Menu = () => {
         name: "Limonade Le Club",
         description: "Limonade maison fraîche à base de sirop artisanal et citron pressé",
         price: "2,50€",
-        image: "https://images.pexels.com/photos/6769479/pexels-photo-6769479.jpeg",
+        image: "https://images.pexels.com/photos/11070660/pexels-photo-11070660.jpeg",
         spicy: false,
         popular: false
       }
