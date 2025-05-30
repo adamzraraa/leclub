@@ -134,25 +134,33 @@ const Menu = () => {
     ],
     desserts: [
       {
+        name: "Pâtisseries Maison",
+        description: "Choix de gâteaux marocains et orientaux préparés à la maison selon la tradition",
+        price: "3,00€",
+        image: "https://images.unsplash.com/photo-1541518763669-27fef04b14ea",
+        spicy: false,
+        popular: true
+      },
+      {
         name: "Chebakia au Miel",
         description: "Pâtisserie traditionnelle en forme de fleur, parfumée à l'orange et au miel",
-        price: "8€",
+        price: "3,00€",
         image: "https://images.unsplash.com/photo-1541518763669-27fef04b14ea",
         spicy: false,
         popular: true
       },
       {
         name: "Cornes de Gazelle",
-        description: "Délicates pâtisseries aux amandes et fleur d'oranger",
-        price: "10€",
+        description: "Délicates pâtisseries aux amandes et fleur d'oranger, savoir-faire ancestral",
+        price: "3,00€",
         image: "https://images.pexels.com/photos/1618929/pexels-photo-1618929.jpeg",
         spicy: false,
         popular: false
       },
       {
-        name: "Mousse au Chocolat à l'Argan",
-        description: "Mousse onctueuse parfumée à l'huile d'argan",
-        price: "9€",
+        name: "Assortiment Oriental",
+        description: "Variété de douceurs orientales aux amandes, miel et eau de fleur d'oranger",
+        price: "3,00€",
         image: "https://images.unsplash.com/photo-1517314626714-ac1b9a16515e",
         spicy: false,
         popular: false
