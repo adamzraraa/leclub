@@ -100,7 +100,7 @@ const About = () => {
           >
             <div className="relative overflow-hidden rounded-2xl shadow-2xl">
               <img
-                src="https://i.imgur.com/5dAoICR.png"
+                src="https://i.postimg.cc/QMfmQB36/469099533-122124969434530331-9045116862422457577-n.jpg"
                 alt="Restaurant Le Club - Façade authentique avec architecture marocaine traditionnelle"
                 className="w-full h-[600px] object-cover"
               />
