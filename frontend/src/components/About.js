@@ -22,7 +22,7 @@ const About = () => {
     {
       icon: <Clock className="w-8 h-8" />,
       title: "Tradition Préservée",
-      description: "Plus de 20 ans d'expérience dans l'art culinaire marocain, un héritage de saveurs préservé avec fierté."
+      description: "Plus de 5 ans d'expérience dans l'art culinaire marocain, un héritage de saveurs préservé avec fierté."
     }
   ];
 
