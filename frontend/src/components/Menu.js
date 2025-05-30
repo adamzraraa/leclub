@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Star, Flame, Leaf, Coffee } from 'lucide-react';
+import { useCart } from '../context/CartContext';
 
 const Menu = () => {
   const [activeCategory, setActiveCategory] = useState('brunch');
