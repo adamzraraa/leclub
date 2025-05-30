@@ -35,7 +35,7 @@ const Contact = () => {
     {
       icon: <Mail className="w-6 h-6" />,
       title: "Email",
-      details: ["contact@restaurantleclub.fr", "Réponse sous 24h"],
+      details: ["restaurant.traiteur.leclub@gmail.com", "Réponse sous 24h"],
       color: "text-red-600"
     },
     {
