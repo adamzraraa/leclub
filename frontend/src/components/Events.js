@@ -27,14 +27,14 @@ const Events = () => {
       description: "Tenue traditionnelle dorée avec broderies artisanales et couronne royale"
     },
     {
-      src: "https://i.postimg.cc/tJG8frrS/Capture-d-e-cran-2025-05-30-a-12-46-08.png", // Photo 2 : Caftan bleu
-      alt: "Mariage traditionnel marocain - Caftan bleu avec diadème",
-      description: "Élégant caftan bleu ciel avec diadème argenté et broderies précieuses"
+      src: "https://i.postimg.cc/tJG8frrS/Capture-d-e-cran-2025-05-30-a-12-46-08.png", // Photo 2 : Caftan blanc
+      alt: "Mariage traditionnel marocain - Caftan blanc avec couronne",
+      description: "Élégant caftan blanc avec couronne royale et broderies précieuses"
     },
     {
-      src: "https://i.postimg.cc/HxXhQwpQ/Capture-d-e-cran-2025-05-30-a-12-46-01.png", // Photo 3 : Takchita bordeaux
-      alt: "Mariage traditionnel marocain - Takchita bordeaux",
-      description: "Somptueuse takchita bordeaux avec broderies dorées traditionnelles"
+      src: "https://i.postimg.cc/HxXhQwpQ/Capture-d-e-cran-2025-05-30-a-12-46-01.png", // Photo 3 : Caftan bleu clair
+      alt: "Mariage traditionnel marocain - Caftan bleu clair avec couronne",
+      description: "Magnifique caftan bleu clair avec couronne traditionnelle et finitions délicates"
     }
   ];
 
