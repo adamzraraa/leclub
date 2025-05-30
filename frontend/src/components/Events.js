@@ -22,19 +22,19 @@ const Events = () => {
   // Galerie de photos de mariages traditionnels réels
   const mariagePhotos = [
     {
-      src: "https://i.postimg.cc/QMfmQB36/469099533-122124969434530331-9045116862422457577-n.jpg", // Photo 1 : Caftan doré
+      src: "https://i.postimg.cc/LsXSB07j/Capture-d-e-cran-2025-05-30-a-12-46-13.png", // Photo 1 : Caftan doré
       alt: "Mariage traditionnel marocain - Caftan doré avec couronne",
-      description: "Tenue traditionnelle dorée avec broderies artisanales"
+      description: "Tenue traditionnelle dorée avec broderies artisanales et couronne royale"
     },
     {
-      src: "https://i.postimg.cc/TY8hYxZL/mariage-bleu.jpg", // Photo 2 : Caftan bleu
+      src: "https://i.postimg.cc/tJG8frrS/Capture-d-e-cran-2025-05-30-a-12-46-08.png", // Photo 2 : Caftan bleu
       alt: "Mariage traditionnel marocain - Caftan bleu avec diadème",
-      description: "Élégant caftan bleu ciel avec diadème argenté"
+      description: "Élégant caftan bleu ciel avec diadème argenté et broderies précieuses"
     },
     {
-      src: "https://i.postimg.cc/8zdmQxPr/mariage-bordeaux.jpg", // Photo 3 : Takchita bordeaux
+      src: "https://i.postimg.cc/HxXhQwpQ/Capture-d-e-cran-2025-05-30-a-12-46-01.png", // Photo 3 : Takchita bordeaux
       alt: "Mariage traditionnel marocain - Takchita bordeaux",
-      description: "Somptueuse takchita bordeaux avec broderies dorées"
+      description: "Somptueuse takchita bordeaux avec broderies dorées traditionnelles"
     }
   ];
 
