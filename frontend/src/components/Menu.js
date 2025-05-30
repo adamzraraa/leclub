@@ -137,7 +137,7 @@ const Menu = () => {
         name: "Pâtisseries Maison",
         description: "Choix de gâteaux marocains et orientaux préparés à la maison selon la tradition",
         price: "3,00€",
-        image: "https://images.unsplash.com/photo-1541518763669-27fef04b14ea",
+        image: "https://images.pexels.com/photos/18077172/pexels-photo-18077172.jpeg",
         spicy: false,
         popular: true
       },
@@ -145,7 +145,7 @@ const Menu = () => {
         name: "Chebakia au Miel",
         description: "Pâtisserie traditionnelle en forme de fleur, parfumée à l'orange et au miel",
         price: "3,00€",
-        image: "https://images.unsplash.com/photo-1541518763669-27fef04b14ea",
+        image: "https://images.pexels.com/photos/30068451/pexels-photo-30068451.jpeg",
         spicy: false,
         popular: true
       },
@@ -153,7 +153,7 @@ const Menu = () => {
         name: "Cornes de Gazelle",
         description: "Délicates pâtisseries aux amandes et fleur d'oranger, savoir-faire ancestral",
         price: "3,00€",
-        image: "https://images.pexels.com/photos/1618929/pexels-photo-1618929.jpeg",
+        image: "https://images.unsplash.com/photo-1617806501553-d3a6a3a7b227",
         spicy: false,
         popular: false
       },
@@ -161,7 +161,7 @@ const Menu = () => {
         name: "Assortiment Oriental",
         description: "Variété de douceurs orientales aux amandes, miel et eau de fleur d'oranger",
         price: "3,00€",
-        image: "https://images.unsplash.com/photo-1517314626714-ac1b9a16515e",
+        image: "https://images.unsplash.com/photo-1574810220185-df93df6f81e5",
         spicy: false,
         popular: false
       }
