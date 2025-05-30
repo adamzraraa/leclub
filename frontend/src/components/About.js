@@ -127,7 +127,7 @@ const About = () => {
                 <div className="bg-white/95 backdrop-blur-sm rounded-xl p-6 shadow-lg">
                   <div className="grid grid-cols-3 gap-4 text-center">
                     <div>
-                      <div className="text-2xl font-bold text-amber-600">20+</div>
+                      <div className="text-2xl font-bold text-amber-600">5+</div>
                       <div className="text-sm text-gray-600">Années d'Experience</div>
                     </div>
                     <div>
@@ -135,7 +135,7 @@ const About = () => {
                       <div className="text-sm text-gray-600">Clients Satisfaits</div>
                     </div>
                     <div>
-                      <div className="text-2xl font-bold text-amber-600">50+</div>
+                      <div className="text-2xl font-bold text-amber-600">20+</div>
                       <div className="text-sm text-gray-600">Plats Traditionnels</div>
                     </div>
                   </div>
