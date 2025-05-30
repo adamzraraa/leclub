@@ -29,7 +29,7 @@ const Contact = () => {
     {
       icon: <Phone className="w-6 h-6" />,
       title: "Téléphone",
-      details: ["+33 4 67 XX XX XX", "Réservations & Informations"],
+      details: ["06 66 53 30 99", "Réservations & Informations"],
       color: "text-amber-600"
     },
     {
