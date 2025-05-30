@@ -160,26 +160,66 @@ const Menu = () => {
     ],
     boissons: [
       {
-        name: "Thé à la Menthe",
-        description: "Thé vert traditionnel à la menthe fraîche et sucre",
-        price: "5€",
+        name: "Thé à la Menthe Traditionnel",
+        description: "Thé vert traditionnel à la menthe fraîche, préparé selon la tradition marocaine",
+        price: "2,80€",
         image: "https://images.unsplash.com/photo-1591299089616-c9604047b1a6",
         spicy: false,
         popular: true
       },
       {
-        name: "Jus d'Orange Frais",
-        description: "Oranges pressées à la minute",
-        price: "6€",
-        image: "https://images.unsplash.com/photo-1567708417032-bef40ae8cea1",
+        name: "Jus d'Orange Pressé",
+        description: "Oranges fraîches pressées à la minute, vitamines et fraîcheur garanties",
+        price: "3,50€",
+        image: "https://images.unsplash.com/photo-1640625488786-ac3975ac3bf4",
+        spicy: false,
+        popular: true
+      },
+      {
+        name: "Café Traditionnel",
+        description: "Café préparé à la manière traditionnelle, servi dans de petites tasses",
+        price: "2,50€",
+        image: "https://images.pexels.com/photos/8963983/pexels-photo-8963983.jpeg",
         spicy: false,
         popular: false
       },
       {
-        name: "Café des Épices",
-        description: "Café aromatisé à la cardamome et cannelle",
-        price: "4€",
-        image: "https://images.unsplash.com/photo-1591299089616-c9604047b1a6",
+        name: "Mojito Le Club (Sans Alcool)",
+        description: "Notre signature cocktail virgin à base de menthe fraîche et citron vert",
+        price: "3,50€",
+        image: "https://images.unsplash.com/photo-1634496064950-02f043806b09",
+        spicy: false,
+        popular: true
+      },
+      {
+        name: "Pina Colada Virgin",
+        description: "Cocktail tropical sans alcool à base de coco et ananas frais",
+        price: "3,50€",
+        image: "https://images.pexels.com/photos/28575243/pexels-photo-28575243.jpeg",
+        spicy: false,
+        popular: false
+      },
+      {
+        name: "Eau Pétillante",
+        description: "Eau gazeuse fraîche servie avec quartier de citron",
+        price: "2,50€",
+        image: "https://images.unsplash.com/photo-1453825012366-3738046cb6c7",
+        spicy: false,
+        popular: false
+      },
+      {
+        name: "Boissons Gazeuses",
+        description: "Sélection de sodas et boissons gazeuses rafraîchissantes",
+        price: "2,80€",
+        image: "https://images.pexels.com/photos/8952409/pexels-photo-8952409.jpeg",
+        spicy: false,
+        popular: false
+      },
+      {
+        name: "Limonade Le Club",
+        description: "Limonade maison fraîche à base de sirop artisanal et citron pressé",
+        price: "2,50€",
+        image: "https://images.pexels.com/photos/6769479/pexels-photo-6769479.jpeg",
         spicy: false,
         popular: false
       }
