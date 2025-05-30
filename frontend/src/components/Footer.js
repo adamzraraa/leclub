@@ -135,11 +135,11 @@ const Footer = () => {
               <div className="space-y-3">
                 <div className="flex items-center text-gray-300">
                   <MapPin className="w-4 h-4 text-amber-400 mr-3 flex-shrink-0" />
-                  <span className="text-sm">123 Avenue des Champs, 75008 Paris</span>
+                  <span className="text-sm">41 Rue de Rondelet, 34970 Lattes</span>
                 </div>
                 <div className="flex items-center text-gray-300">
                   <Phone className="w-4 h-4 text-amber-400 mr-3 flex-shrink-0" />
-                  <span className="text-sm">+33 1 23 45 67 89</span>
+                  <span className="text-sm">+33 4 67 XX XX XX</span>
                 </div>
                 <div className="flex items-center text-gray-300">
                   <Mail className="w-4 h-4 text-amber-400 mr-3 flex-shrink-0" />
@@ -147,7 +147,10 @@ const Footer = () => {
                 </div>
                 <div className="flex items-center text-gray-300">
                   <Clock className="w-4 h-4 text-amber-400 mr-3 flex-shrink-0" />
-                  <span className="text-sm">Mar-Dim: 12h-14h30 / 19h-23h</span>
+                  <span className="text-sm">Lun-Ven: 12h-14h30</span>
+                </div>
+                <div className="flex items-center text-gray-300 ml-7">
+                  <span className="text-sm">Sam: 24h/24 • Dim: Fermé</span>
                 </div>
               </div>
             </motion.div>
