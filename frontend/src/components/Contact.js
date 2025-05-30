@@ -29,7 +29,7 @@ const Contact = () => {
     {
       icon: <Phone className="w-6 h-6" />,
       title: "Téléphone",
-      details: ["+33 1 23 45 67 89", "Réservations & Informations"],
+      details: ["+33 4 67 XX XX XX", "Réservations & Informations"],
       color: "text-amber-600"
     },
     {
@@ -41,13 +41,13 @@ const Contact = () => {
     {
       icon: <MapPin className="w-6 h-6" />,
       title: "Adresse",
-      details: ["123 Avenue des Champs", "75008 Paris, France"],
+      details: ["41 Rue de Rondelet", "34970 Lattes, France"],
       color: "text-amber-600"
     },
     {
       icon: <Clock className="w-6 h-6" />,
       title: "Horaires",
-      details: ["Mar-Dim: 12h-14h30 / 19h-23h", "Fermé le lundi"],
+      details: ["Lun-Ven: 12h-14h30", "Sam: Ouvert 24h/24 • Dim: Fermé"],
       color: "text-red-600"
     }
   ];
