@@ -14,6 +14,56 @@ const Menu = () => {
   ];
 
   const menuItems = {
+    brunch: [
+      {
+        name: "Petit-Déjeuner Royal Marocain",
+        description: "Assortiment de pâtisseries marocaines, msemen, miel, beurre, fromage et confiture d'orange",
+        price: "22€",
+        image: "https://images.pexels.com/photos/14017961/pexels-photo-14017961.jpeg",
+        spicy: false,
+        popular: true
+      },
+      {
+        name: "Crêpes Marocaines aux Amandes",
+        description: "Crêpes traditionnelles garnies d'amandes effilées, miel et cannelle",
+        price: "16€",
+        image: "https://images.pexels.com/photos/32292781/pexels-photo-32292781.jpeg",
+        spicy: false,
+        popular: true
+      },
+      {
+        name: "Omelette aux Herbes Fraîches",
+        description: "Omelette moelleuse aux herbes du jardin, tomates et olives marocaines",
+        price: "14€",
+        image: "https://images.pexels.com/photos/18077172/pexels-photo-18077172.jpeg",
+        spicy: false,
+        popular: false
+      },
+      {
+        name: "Tartines à l'Avocat et Dukkah",
+        description: "Pain artisanal, avocat, mélange d'épices dukkah et huile d'argan",
+        price: "13€",
+        image: "https://images.unsplash.com/photo-1714628405052-8598f9fed4c7",
+        spicy: false,
+        popular: false
+      },
+      {
+        name: "Shakshuka Marocaine",
+        description: "Œufs pochés dans une sauce tomate épicée aux poivrons et coriandre",
+        price: "18€",
+        image: "https://images.pexels.com/photos/18160499/pexels-photo-18160499.jpeg",
+        spicy: true,
+        popular: true
+      },
+      {
+        name: "Café des Épices + Pâtisseries",
+        description: "Café parfumé à la cardamome servi avec une sélection de petites pâtisseries",
+        price: "12€",
+        image: "https://images.pexels.com/photos/8525684/pexels-photo-8525684.jpeg",
+        spicy: false,
+        popular: false
+      }
+    ],
     entrees: [
       {
         name: "Pastilla au Poulet",
