@@ -1,6 +1,6 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { X, Plus, Minus, ShoppingBag, Trash2 } from 'lucide-react';
+import { X, Plus, Minus, ShoppingBag, Trash2, User, Clock, Send } from 'lucide-react';
 import { useCart } from '../context/CartContext';
 
 const Cart = () => {
@@ -15,20 +15,61 @@ const Cart = () => {
     getTotalPrice 
   } = useCart();
 
-  const handleCheckout = () => {
-    // Créer un message WhatsApp ou email avec la commande
-    const orderDetails = items.map(item => 
+  const [showCheckoutForm, setShowCheckoutForm] = useState(false);
+  const [orderDetails, setOrderDetails] = useState({
+    name: '',
+    time: ''
+  });
+
+  const handleInputChange = (e) => {
+    setOrderDetails({
+      ...orderDetails,
+      [e.target.name]: e.target.value
+    });
+  };
+
+  const handleConfirmOrder = () => {
+    if (!orderDetails.name || !orderDetails.time) {
+      alert('Veuillez remplir votre nom et l\'heure de réservation');
+      return;
+    }
+
+    // Créer un message WhatsApp détaillé avec la commande
+    const itemsList = items.map(item => 
       `${item.quantity}x ${item.name} (${item.price})`
     ).join('\n');
     
     const total = getTotalPrice().toFixed(2);
-    const message = `Nouvelle commande Restaurant Le Club:\n\n${orderDetails}\n\nTotal: ${total}€\n\nMerci de confirmer la commande.`;
+    const message = `🍽️ NOUVELLE COMMANDE - Restaurant Le Club
+
+👤 Nom: ${orderDetails.name}
+🕐 Heure de réservation: ${orderDetails.time}
+
+📋 COMMANDE:
+${itemsList}
+
+💰 TOTAL: ${total}€
+
+📍 Service sur place
+41 Rue de Rondelet, 34970 Lattes
+
+Merci de confirmer la disponibilité.`;
     
-    // Ouvrir WhatsApp ou email avec la commande
+    // Ouvrir WhatsApp avec la commande
     const phone = "0666533099";
     const whatsappUrl = `https://wa.me/${phone}?text=${encodeURIComponent(message)}`;
     
     window.open(whatsappUrl, '_blank');
+    
+    // Vider le panier et fermer
+    clearCart();
+    setShowCheckoutForm(false);
+    setOrderDetails({ name: '', time: '' });
+    toggleCart();
+  };
+
+  const handleShowCheckoutForm = () => {
+    setShowCheckoutForm(true);
   };
 
   return (
