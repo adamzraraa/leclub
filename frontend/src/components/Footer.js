@@ -128,7 +128,7 @@ const Footer = () => {
 
               <p className="text-gray-300 mb-6 leading-relaxed">
                 Découvrez l'art culinaire marocain authentique dans une ambiance élégante et raffinée. 
-                Une expérience gastronomique unique au cœur de Paris.
+                Une expérience gastronomique unique au cœur de Lattes.
               </p>
 
               {/* Contact Info */}
