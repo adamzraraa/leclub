@@ -27,8 +27,8 @@ const Gallery = () => {
       category: "Boissons"
     },
     {
-      src: "https://images.pexels.com/photos/6634469/pexels-photo-6634469.jpeg",
-      alt: "Ambiance restaurant marocain",
+      src: "https://i.postimg.cc/SN98Gg82/469967523-122126728664530331-1408175679896011830-n.jpg",
+      alt: "Restaurant Le Club - Ambiance authentique marocaine",
       category: "Ambiance"
     },
     {
