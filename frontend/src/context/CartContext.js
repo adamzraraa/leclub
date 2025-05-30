@@ -52,6 +52,12 @@ const cartReducer = (state, action) => {
         items: []
       };
 
+    case 'TOGGLE_CART':
+      return {
+        ...state,
+        isOpen: action.payload
+      };
+
     default:
       return state;
   }
