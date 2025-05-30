@@ -3,7 +3,7 @@ import { motion } from 'framer-motion';
 import { Star, Flame, Leaf } from 'lucide-react';
 
 const Menu = () => {
-  const [activeCategory, setActiveCategory] = useState('entrees');
+  const [activeCategory, setActiveCategory] = useState('brunch');
 
   const menuCategories = [
     { id: 'brunch', label: 'Brunch Oriental', icon: <Star className="w-5 h-5" /> },
