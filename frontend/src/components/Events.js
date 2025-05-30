@@ -16,6 +16,27 @@ const Events = () => {
 
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState({ type: '', message: '' });
+  const [isGalleryOpen, setIsGalleryOpen] = useState(false);
+  const [currentImageIndex, setCurrentImageIndex] = useState(0);
+
+  // Galerie de photos de mariages traditionnels réels
+  const mariagePhotos = [
+    {
+      src: "https://i.postimg.cc/QMfmQB36/469099533-122124969434530331-9045116862422457577-n.jpg", // Photo 1 : Caftan doré
+      alt: "Mariage traditionnel marocain - Caftan doré avec couronne",
+      description: "Tenue traditionnelle dorée avec broderies artisanales"
+    },
+    {
+      src: "https://i.postimg.cc/TY8hYxZL/mariage-bleu.jpg", // Photo 2 : Caftan bleu
+      alt: "Mariage traditionnel marocain - Caftan bleu avec diadème",
+      description: "Élégant caftan bleu ciel avec diadème argenté"
+    },
+    {
+      src: "https://i.postimg.cc/8zdmQxPr/mariage-bordeaux.jpg", // Photo 3 : Takchita bordeaux
+      alt: "Mariage traditionnel marocain - Takchita bordeaux",
+      description: "Somptueuse takchita bordeaux avec broderies dorées"
+    }
+  ];
 
   const handleInputChange = (e) => {
     setFormData({
