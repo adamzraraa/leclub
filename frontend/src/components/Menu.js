@@ -5,6 +5,7 @@ import { useCart } from '../context/CartContext';
 
 const Menu = () => {
   const [activeCategory, setActiveCategory] = useState('brunch');
+  const { addToCart } = useCart();
 
   const menuCategories = [
     { id: 'brunch', label: 'Brunch Oriental', icon: <Coffee className="w-5 h-5" /> },
