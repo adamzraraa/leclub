@@ -6,7 +6,7 @@ const Menu = () => {
   const [activeCategory, setActiveCategory] = useState('brunch');
 
   const menuCategories = [
-    { id: 'brunch', label: 'Brunch Oriental', icon: <Star className="w-5 h-5" /> },
+    { id: 'brunch', label: 'Brunch Oriental', icon: <Coffee className="w-5 h-5" /> },
     { id: 'entrees', label: 'Entrées', icon: <Leaf className="w-5 h-5" /> },
     { id: 'plats', label: 'Plats Principaux', icon: <Flame className="w-5 h-5" /> },
     { id: 'desserts', label: 'Desserts', icon: <Star className="w-5 h-5" /> },
