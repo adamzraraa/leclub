@@ -8,6 +8,7 @@ import Events from '../components/Events';
 import Testimonials from '../components/Testimonials';
 import Contact from '../components/Contact';
 import Footer from '../components/Footer';
+import Cart from '../components/Cart';
 
 const HomePage = () => {
   return (
@@ -21,6 +22,7 @@ const HomePage = () => {
       <Testimonials />
       <Contact />
       <Footer />
+      <Cart />
     </div>
   );
 };
