@@ -24,11 +24,53 @@ const Events = () => {
     });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    // Handle form submission
-    console.log('Event inquiry submitted:', formData);
-    alert('Votre demande a été envoyée avec succès ! Nous vous contacterons bientôt.');
+    setIsSubmitting(true);
+    setSubmitStatus({ type: '', message: '' });
+
+    try {
+      // Tentative d'envoi via EmailJS
+      const result = await sendEventQuote(formData);
+      
+      if (result.success) {
+        setSubmitStatus({ 
+          type: 'success', 
+          message: 'Votre demande de devis a été envoyée avec succès ! Nous vous contacterons dans les plus brefs délais.' 
+        });
+        
+        // Reset du formulaire
+        setFormData({
+          name: '',
+          email: '',
+          phone: '',
+          eventType: '',
+          date: '',
+          guests: '',
+          message: ''
+        });
+      } else {
+        // Fallback avec mailto
+        const mailtoLink = createMailtoLink(formData, true);
+        window.location.href = mailtoLink;
+        
+        setSubmitStatus({ 
+          type: 'info', 
+          message: 'Votre client mail va s\'ouvrir avec votre demande pré-remplie. Envoyez-la pour finaliser votre demande de devis.' 
+        });
+      }
+    } catch (error) {
+      // Fallback avec mailto en cas d'erreur
+      const mailtoLink = createMailtoLink(formData, true);
+      window.location.href = mailtoLink;
+      
+      setSubmitStatus({ 
+        type: 'info', 
+        message: 'Votre client mail va s\'ouvrir avec votre demande pré-remplie. Envoyez-la pour finaliser votre demande de devis.' 
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const eventTypes = [
