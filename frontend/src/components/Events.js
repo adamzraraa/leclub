@@ -459,7 +459,7 @@ const Events = () => {
                 <ul className="space-y-2 text-sm text-gray-600">
                   <li className="flex items-center">
                     <Star className="w-4 h-4 text-amber-500 mr-2" />
-                    Experience de 20+ ans en événementiel
+                    Experience de 5+ ans en événementiel
                   </li>
                   <li className="flex items-center">
                     <Star className="w-4 h-4 text-amber-500 mr-2" />
