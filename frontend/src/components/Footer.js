@@ -143,7 +143,7 @@ const Footer = () => {
                 </div>
                 <div className="flex items-center text-gray-300">
                   <Mail className="w-4 h-4 text-amber-400 mr-3 flex-shrink-0" />
-                  <span className="text-sm">contact@restaurantleclub.fr</span>
+                  <span className="text-sm">restaurant.traiteur.leclub@gmail.com</span>
                 </div>
                 <div className="flex items-center text-gray-300">
                   <Clock className="w-4 h-4 text-amber-400 mr-3 flex-shrink-0" />
