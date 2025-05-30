@@ -2,16 +2,365 @@
 @tailwind components;
 @tailwind utilities;
 
-body {
+/* Import custom fonts */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:wght@400;500;600;700;800&display=swap');
+
+/* Base styles */
+@layer base {
+  html {
+    font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif;
+    scroll-behavior: smooth;
+  }
+  
+  body {
     margin: 0;
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto",
-        "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans",
-        "Helvetica Neue", sans-serif;
+    font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    line-height: 1.6;
+    color: #374151;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Playfair Display', serif;
+    font-weight: 600;
+    line-height: 1.2;
+    color: #1f2937;
+  }
+
+  /* Custom scrollbar */
+  ::-webkit-scrollbar {
+    width: 8px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: #f8fafc;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: linear-gradient(135deg, #f59e0b, #dc2626);
+    border-radius: 4px;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(135deg, #d97706, #b91c1c);
+  }
+}
+
+/* Component styles */
+@layer components {
+  /* Button components */
+  .btn-primary {
+    @apply bg-gradient-to-r from-amber-600 to-red-600 text-white px-6 py-3 rounded-full font-semibold shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300;
+  }
+
+  .btn-secondary {
+    @apply border-2 border-amber-600 text-amber-600 px-6 py-3 rounded-full font-semibold hover:bg-amber-600 hover:text-white transition-all duration-300;
+  }
+
+  .btn-ghost {
+    @apply text-gray-700 hover:text-amber-600 px-4 py-2 rounded-lg transition-colors duration-200;
+  }
+
+  /* Card components */
+  .card {
+    @apply bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300;
+  }
+
+  .card-hover {
+    @apply transform hover:-translate-y-2 transition-all duration-300;
+  }
+
+  /* Glass morphism */
+  .glass {
+    @apply bg-white bg-opacity-10 backdrop-blur-md border border-white border-opacity-20;
+  }
+
+  /* Gradient backgrounds */
+  .bg-morocco {
+    @apply bg-gradient-to-r from-amber-600 to-red-600;
+  }
+
+  .bg-warm {
+    @apply bg-gradient-to-b from-amber-50 to-orange-50;
+  }
+
+  /* Text styles */
+  .text-morocco {
+    @apply text-transparent bg-clip-text bg-gradient-to-r from-amber-600 to-red-600;
+  }
+
+  .text-shadow {
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+
+  .text-shadow-lg {
+    text-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  }
+
+  /* Form styles */
+  .form-input {
+    @apply w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-amber-500 focus:border-transparent transition-all duration-200;
+  }
+
+  .form-textarea {
+    @apply w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-amber-500 focus:border-transparent transition-all duration-200 resize-none;
+  }
+
+  .form-select {
+    @apply w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-amber-500 focus:border-transparent transition-all duration-200 bg-white;
+  }
+
+  /* Navigation */
+  .nav-link {
+    @apply font-medium transition-colors duration-200 hover:text-amber-600;
+  }
+
+  .nav-mobile {
+    @apply block w-full text-left py-3 px-4 text-gray-700 hover:text-amber-600 hover:bg-amber-50 rounded-lg transition-all duration-200;
+  }
+
+  /* Section headers */
+  .section-header {
+    @apply text-center mb-12;
+  }
+
+  .section-badge {
+    @apply inline-block bg-gradient-to-r from-amber-600 to-red-600 text-white px-4 py-2 rounded-full text-sm font-semibold mb-4;
+  }
+
+  .section-title {
+    @apply text-4xl lg:text-5xl font-bold text-gray-800 mb-6;
+  }
+
+  .section-subtitle {
+    @apply text-lg text-gray-600 max-w-2xl mx-auto;
+  }
+
+  /* Container styles */
+  .container-custom {
+    @apply container mx-auto px-4 sm:px-6 lg:px-8;
+  }
+
+  /* Image overlays */
+  .image-overlay {
+    @apply relative overflow-hidden;
+  }
+
+  .image-overlay::after {
+    content: '';
+    @apply absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 transition-opacity duration-300;
+  }
+
+  .image-overlay:hover::after {
+    @apply opacity-100;
+  }
+
+  /* Animation classes */
+  .animate-fade-in {
+    animation: fadeIn 0.6s ease-out;
+  }
+
+  .animate-slide-up {
+    animation: slideUp 0.6s ease-out;
+  }
+
+  .animate-scale-in {
+    animation: scaleIn 0.4s ease-out;
+  }
+}
+
+/* Utility styles */
+@layer utilities {
+  /* Spacing utilities */
+  .space-section {
+    @apply py-16 lg:py-24;
+  }
+
+  .space-element {
+    @apply mb-8 lg:mb-12;
+  }
+
+  /* Moroccan pattern utilities */
+  .pattern-moroccan {
+    background-image: 
+      radial-gradient(circle at 50% 50%, rgba(245, 158, 11, 0.1) 0%, transparent 50%),
+      repeating-linear-gradient(
+        45deg,
+        transparent,
+        transparent 10px,
+        rgba(245, 158, 11, 0.05) 10px,
+        rgba(245, 158, 11, 0.05) 20px
+      );
+  }
+
+  /* Backdrop blur utilities */
+  .backdrop-blur-strong {
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+  }
+
+  /* Typography utilities */
+  .font-display {
+    font-family: 'Playfair Display', serif;
+  }
+
+  .font-body {
+    font-family: 'Inter', sans-serif;
+  }
+
+  /* Focus utilities */
+  .focus-morocco {
+    @apply focus:ring-2 focus:ring-amber-500 focus:ring-opacity-50 focus:outline-none;
+  }
+
+  /* Responsive text utilities */
+  .text-responsive-xl {
+    @apply text-2xl sm:text-3xl lg:text-4xl xl:text-5xl;
+  }
+
+  .text-responsive-lg {
+    @apply text-xl sm:text-2xl lg:text-3xl;
+  }
+
+  .text-responsive-md {
+    @apply text-lg sm:text-xl lg:text-2xl;
+  }
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes pulse-glow {
+  0%, 100% {
+    box-shadow: 0 0 0 0 rgba(245, 158, 11, 0.7);
+  }
+  50% {
+    box-shadow: 0 0 0 10px rgba(245, 158, 11, 0);
+  }
+}
+
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
+
+.animate-pulse-glow {
+  animation: pulse-glow 2s infinite;
+}
+
+/* Selection styles */
+::selection {
+  background: rgba(245, 158, 11, 0.3);
+  color: inherit;
+}
+
+::-moz-selection {
+  background: rgba(245, 158, 11, 0.3);
+  color: inherit;
+}
+
+/* Print styles */
+@media print {
+  .no-print {
+    display: none !important;
+  }
+  
+  * {
+    color: black !important;
+    background: white !important;
+  }
+}
+
+/* Accessibility */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* High contrast mode */
+@media (prefers-contrast: high) {
+  .bg-morocco {
+    @apply bg-black text-white;
+  }
+  
+  .text-morocco {
+    @apply text-black;
+  }
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Mobile optimizations */
+@media (max-width: 640px) {
+  .mobile-optimized {
+    font-size: 0.875rem;
+    line-height: 1.25rem;
+  }
+  
+  .mobile-padding {
+    @apply px-4;
+  }
+  
+  .mobile-spacing {
+    @apply py-8;
+  }
 }
 
 code {
-    font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
-        monospace;
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New", monospace;
 }

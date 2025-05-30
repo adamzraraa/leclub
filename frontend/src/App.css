@@ -1,38 +1,266 @@
+/* Custom CSS for Le Restaurant Le Club */
+
 .App {
+  min-height: 100vh;
+}
+
+/* Smooth scrolling for the entire page */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Custom animations and effects */
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+}
+
+.float-animation {
+  animation: float 6s ease-in-out infinite;
+}
+
+/* Glass morphism effect */
+.glass-effect {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+/* Moroccan pattern overlay */
+.moroccan-pattern {
+  background-image: 
+    radial-gradient(circle at 50% 50%, rgba(245, 158, 11, 0.1) 0%, transparent 50%),
+    repeating-linear-gradient(
+      45deg,
+      transparent,
+      transparent 10px,
+      rgba(245, 158, 11, 0.05) 10px,
+      rgba(245, 158, 11, 0.05) 20px
+    );
+}
+
+/* Hover effects for cards */
+.hover-lift {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.hover-lift:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.15);
+}
+
+/* Custom gradient backgrounds */
+.gradient-morocco {
+  background: linear-gradient(135deg, #f59e0b 0%, #dc2626 100%);
+}
+
+.gradient-warm {
+  background: linear-gradient(135deg, #fef3c7 0%, #fed7aa 100%);
+}
+
+/* Decorative elements */
+.decorative-border {
+  position: relative;
+}
+
+.decorative-border::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60px;
+  height: 4px;
+  background: linear-gradient(90deg, #f59e0b, #dc2626);
+  border-radius: 2px;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f5f9;
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(135deg, #f59e0b, #dc2626);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(135deg, #d97706, #b91c1c);
+}
+
+/* Text selection */
+::selection {
+  background: rgba(245, 158, 11, 0.3);
+  color: inherit;
+}
+
+/* Focus styles */
+.focus\:ring-morocco:focus {
+  ring-color: #f59e0b;
+  ring-width: 2px;
+}
+
+/* Custom button animations */
+.btn-morocco {
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+.btn-morocco::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  transition: width 0.6s, height 0.6s;
+}
+
+.btn-morocco:hover::before {
+  width: 300px;
+  height: 300px;
+}
+
+/* Navbar backdrop blur effect */
+.navbar-blur {
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+}
+
+/* Image overlay effects */
+.image-overlay {
+  position: relative;
+  overflow: hidden;
+}
+
+.image-overlay::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(
+    45deg,
+    rgba(245, 158, 11, 0.1) 0%,
+    rgba(220, 38, 38, 0.1) 100%
+  );
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.image-overlay:hover::after {
+  opacity: 1;
+}
+
+/* Typography enhancements */
+.text-shadow {
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.text-shadow-lg {
+  text-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Loading animations */
+@keyframes pulse-morocco {
+  0%, 100% {
+    box-shadow: 0 0 0 0 rgba(245, 158, 11, 0.7);
+  }
+  50% {
+    box-shadow: 0 0 0 10px rgba(245, 158, 11, 0);
+  }
+}
+
+.pulse-morocco {
+  animation: pulse-morocco 2s infinite;
+}
+
+/* Parallax effect helpers */
+.parallax-slow {
+  transform: translateZ(0);
+  will-change: transform;
+}
+
+/* Form enhancements */
+.form-input-morocco {
+  transition: all 0.3s ease;
+  border: 2px solid transparent;
+}
+
+.form-input-morocco:focus {
+  border-color: #f59e0b;
+  box-shadow: 0 0 0 3px rgba(245, 158, 11, 0.1);
+  outline: none;
+}
+
+/* Mobile responsiveness helpers */
+@media (max-width: 768px) {
+  .mobile-padding {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+  
+  .mobile-text-center {
     text-align: center;
+  }
 }
 
-.App-logo {
-    height: 40vmin;
-    pointer-events: none;
+/* Print styles */
+@media print {
+  .no-print {
+    display: none !important;
+  }
 }
 
-@media (prefers-reduced-motion: no-preference) {
-    .App-logo {
-        animation: App-logo-spin infinite 20s linear;
-    }
+/* Accessibility improvements */
+.skip-link {
+  position: absolute;
+  top: -40px;
+  left: 6px;
+  background: #f59e0b;
+  color: white;
+  padding: 8px;
+  text-decoration: none;
+  z-index: 9999;
+  border-radius: 4px;
 }
 
-.App-header {
-    background-color: #0f0f10;
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    font-size: calc(10px + 2vmin);
-    color: white;
+.skip-link:focus {
+  top: 6px;
 }
 
-.App-link {
-    color: #61dafb;
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+  .gradient-morocco {
+    background: #000;
+    color: #fff;
+  }
 }
 
-@keyframes App-logo-spin {
-    from {
-        transform: rotate(0deg);
-    }
-    to {
-        transform: rotate(360deg);
-    }
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Dark mode support (if needed later) */
+@media (prefers-color-scheme: dark) {
+  .auto-dark {
+    background: #1a1a1a;
+    color: #ffffff;
+  }
 }
