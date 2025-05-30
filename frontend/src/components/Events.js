@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-import { Heart, Users, Calendar, Star, Phone, Mail } from 'lucide-react';
+import { Heart, Users, Calendar, Star, Phone, Mail, CheckCircle, AlertCircle, Loader } from 'lucide-react';
+import { sendEventQuote, createMailtoLink } from '../services/emailService';
 
 const Events = () => {
   const [formData, setFormData] = useState({
