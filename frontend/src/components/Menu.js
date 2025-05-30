@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-import { Star, Flame, Leaf } from 'lucide-react';
+import { Star, Flame, Leaf, Coffee } from 'lucide-react';
 
 const Menu = () => {
   const [activeCategory, setActiveCategory] = useState('brunch');
