@@ -205,14 +205,51 @@ Merci de confirmer la disponibilité.`;
 
                 {/* Boutons d'action */}
                 <div className="space-y-3">
-                  <motion.button
-                    whileHover={{ scale: 1.02 }}
-                    whileTap={{ scale: 0.98 }}
-                    onClick={handleShowCheckoutForm}
-                    className="w-full bg-gradient-to-r from-amber-600 to-red-600 text-white py-4 rounded-xl font-semibold text-lg shadow-lg hover:shadow-xl transition-all duration-300"
-                  >
-                    Commander sur WhatsApp
-                  </motion.button>
+                  {showCheckoutForm ? (
+                    <div className="space-y-4">
+                      <div className="space-y-2">
+                        <div className="flex items-center space-x-2">
+                          <User className="w-5 h-5 text-gray-500" />
+                          <input
+                            type="text"
+                            name="name"
+                            value={orderDetails.name}
+                            onChange={handleInputChange}
+                            placeholder="Votre nom"
+                            className="w-full p-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-amber-500 focus:border-transparent"
+                          />
+                        </div>
+                        <div className="flex items-center space-x-2">
+                          <Clock className="w-5 h-5 text-gray-500" />
+                          <input
+                            type="time"
+                            name="time"
+                            value={orderDetails.time}
+                            onChange={handleInputChange}
+                            className="w-full p-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-amber-500 focus:border-transparent"
+                          />
+                        </div>
+                      </div>
+                      <motion.button
+                        whileHover={{ scale: 1.02 }}
+                        whileTap={{ scale: 0.98 }}
+                        onClick={handleConfirmOrder}
+                        className="w-full bg-gradient-to-r from-amber-600 to-red-600 text-white py-4 rounded-xl font-semibold text-lg shadow-lg hover:shadow-xl transition-all duration-300 flex items-center justify-center space-x-2"
+                      >
+                        <Send className="w-5 h-5" />
+                        <span>Envoyer la commande</span>
+                      </motion.button>
+                    </div>
+                  ) : (
+                    <motion.button
+                      whileHover={{ scale: 1.02 }}
+                      whileTap={{ scale: 0.98 }}
+                      onClick={handleShowCheckoutForm}
+                      className="w-full bg-gradient-to-r from-amber-600 to-red-600 text-white py-4 rounded-xl font-semibold text-lg shadow-lg hover:shadow-xl transition-all duration-300"
+                    >
+                      Commander sur WhatsApp
+                    </motion.button>
+                  )}
                   
                   <button
                     onClick={clearCart}
