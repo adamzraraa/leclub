@@ -150,7 +150,7 @@ const Contact = () => {
                 <div className="text-center">
                   <MapPin className="w-12 h-12 text-amber-600 mx-auto mb-3" />
                   <p className="text-gray-600 font-medium">Carte Interactive</p>
-                  <p className="text-sm text-gray-500">123 Avenue des Champs, 75008 Paris</p>
+                  <p className="text-sm text-gray-500">41 Rue de Rondelet, 34970 Lattes</p>
                 </div>
               </div>
             </motion.div>
