@@ -336,13 +336,16 @@ const Menu = () => {
                     <span className="text-2xl font-bold text-amber-600">
                       {item.price}
                     </span>
-                    <motion.button
-                      whileHover={{ scale: 1.05 }}
-                      whileTap={{ scale: 0.95 }}
-                      className="bg-gradient-to-r from-amber-600 to-red-600 text-white px-4 py-2 rounded-full text-sm font-semibold hover:shadow-lg transition-all duration-300"
-                    >
-                      Commander
-                    </motion.button>
+                    {/* Afficher le bouton Commander seulement pour le premier élément du brunch ou les autres catégories */}
+                    {(activeCategory !== 'brunch' || index === 0) && (
+                      <motion.button
+                        whileHover={{ scale: 1.05 }}
+                        whileTap={{ scale: 0.95 }}
+                        className="bg-gradient-to-r from-amber-600 to-red-600 text-white px-4 py-2 rounded-full text-sm font-semibold hover:shadow-lg transition-all duration-300"
+                      >
+                        Commander
+                      </motion.button>
+                    )}
                   </div>
                 </div>
               </div>
