@@ -6,6 +6,7 @@ import { useCart } from '../context/CartContext';
 const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const { getTotalItems, toggleCart } = useCart();
 
   useEffect(() => {
     const handleScroll = () => {
