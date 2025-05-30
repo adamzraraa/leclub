@@ -208,7 +208,10 @@ const Events = () => {
               transition={{ duration: 0.6, delay: index * 0.2 }}
               viewport={{ once: true }}
               whileHover={{ y: -10 }}
-              className="bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 overflow-hidden group"
+              onClick={event.clickable ? event.galleryAction : undefined}
+              className={`bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 overflow-hidden group ${
+                event.clickable ? 'cursor-pointer' : ''
+              }`}
             >
               <div className="relative h-48 overflow-hidden">
                 <img
@@ -220,11 +223,18 @@ const Events = () => {
                 <div className="absolute top-4 left-4 text-amber-400">
                   {event.icon}
                 </div>
+                {/* Indicateur cliquable pour les mariages */}
+                {event.clickable && (
+                  <div className="absolute top-4 right-4 bg-amber-600 text-white px-3 py-1 rounded-full text-xs font-semibold opacity-90">
+                    Voir Photos Réelles
+                  </div>
+                )}
               </div>
               
               <div className="p-6">
                 <h3 className="text-xl font-bold text-gray-800 mb-3 group-hover:text-amber-600 transition-colors duration-300">
                   {event.title}
+                  {event.clickable && <span className="text-amber-600 ml-2">📸</span>}
                 </h3>
                 <p className="text-gray-600 mb-4 leading-relaxed">
                   {event.description}
@@ -238,6 +248,14 @@ const Events = () => {
                     </li>
                   ))}
                 </ul>
+                
+                {event.clickable && (
+                  <div className="mt-4 text-center">
+                    <span className="text-amber-600 font-semibold text-sm">
+                      👆 Cliquez pour voir nos vrais mariages traditionnels
+                    </span>
+                  </div>
+                )}
               </div>
             </motion.div>
           ))}
