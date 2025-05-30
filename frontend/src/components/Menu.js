@@ -7,6 +7,13 @@ const Menu = () => {
   const [activeCategory, setActiveCategory] = useState('brunch');
   const { addToCart } = useCart();
 
+  const handleAddToCart = (item, category) => {
+    addToCart({
+      ...item,
+      category: category
+    });
+  };
+
   const menuCategories = [
     { id: 'brunch', label: 'Brunch Oriental', icon: <Coffee className="w-5 h-5" /> },
     { id: 'semaine', label: 'Menu Semaine', icon: <Star className="w-5 h-5" /> },
