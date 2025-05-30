@@ -379,13 +379,45 @@ const Events = () => {
                   ></textarea>
                 </div>
                 
+                {/* Status Message */}
+                {submitStatus.message && (
+                  <motion.div
+                    initial={{ opacity: 0, y: -10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    className={`p-4 rounded-lg flex items-center ${
+                      submitStatus.type === 'success' 
+                        ? 'bg-green-50 text-green-800 border border-green-200' 
+                        : submitStatus.type === 'error'
+                        ? 'bg-red-50 text-red-800 border border-red-200'
+                        : 'bg-blue-50 text-blue-800 border border-blue-200'
+                    }`}
+                  >
+                    {submitStatus.type === 'success' && <CheckCircle className="w-5 h-5 mr-2" />}
+                    {submitStatus.type === 'error' && <AlertCircle className="w-5 h-5 mr-2" />}
+                    {submitStatus.type === 'info' && <Mail className="w-5 h-5 mr-2" />}
+                    <span className="text-sm">{submitStatus.message}</span>
+                  </motion.div>
+                )}
+                
                 <motion.button
                   type="submit"
-                  whileHover={{ scale: 1.02 }}
-                  whileTap={{ scale: 0.98 }}
-                  className="w-full bg-gradient-to-r from-amber-600 to-red-600 text-white py-4 rounded-lg font-semibold text-lg shadow-lg hover:shadow-xl transition-all duration-300"
+                  disabled={isSubmitting}
+                  whileHover={{ scale: isSubmitting ? 1 : 1.02 }}
+                  whileTap={{ scale: isSubmitting ? 1 : 0.98 }}
+                  className={`w-full py-4 rounded-lg font-semibold text-lg shadow-lg transition-all duration-300 flex items-center justify-center ${
+                    isSubmitting 
+                      ? 'bg-gray-400 cursor-not-allowed' 
+                      : 'bg-gradient-to-r from-amber-600 to-red-600 text-white hover:shadow-xl'
+                  }`}
                 >
-                  Envoyer ma Demande
+                  {isSubmitting ? (
+                    <>
+                      <Loader className="w-5 h-5 mr-2 animate-spin" />
+                      Envoi en cours...
+                    </>
+                  ) : (
+                    'Envoyer ma Demande'
+                  )}
                 </motion.button>
               </form>
             </div>
