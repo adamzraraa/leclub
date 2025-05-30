@@ -355,7 +355,7 @@ const Events = () => {
                   <Phone className="w-6 h-6 text-amber-600 mr-4" />
                   <div>
                     <p className="font-semibold text-gray-800">Téléphone</p>
-                    <p className="text-gray-600">01 23 45 67 89</p>
+                    <p className="text-gray-600">06 66 53 30 99</p>
                   </div>
                 </div>
                 
