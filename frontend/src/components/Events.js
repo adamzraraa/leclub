@@ -538,7 +538,6 @@ const Events = () => {
           </div>
         </motion.div>
       </div>
-      </div>
 
       {/* Galerie Modale pour Mariages Traditionnels */}
       <AnimatePresence>
