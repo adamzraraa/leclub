@@ -55,24 +55,74 @@ ${itemsList}
 
 Merci de confirmer la disponibilité.`;
     
-    // Formater le numéro pour WhatsApp (enlever les espaces et ajouter +33)
-    const phoneNumber = "33666533099"; // Format international sans le + pour WhatsApp
-    const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
+    // Essayer plusieurs formats de numéro WhatsApp
+    const phoneFormats = [
+      "33666533099",    // Format international
+      "+33666533099",   // Avec le +
+      "0666533099"      // Format national
+    ];
     
-    console.log('WhatsApp URL:', whatsappUrl); // Pour debug
+    // Essayer d'ouvrir WhatsApp avec le premier format
+    let whatsappUrl = `https://wa.me/${phoneFormats[0]}?text=${encodeURIComponent(message)}`;
+    console.log('Tentative WhatsApp:', whatsappUrl);
     
-    // Ouvrir WhatsApp avec la commande
-    const success = window.open(whatsappUrl, '_blank');
+    // Ouvrir WhatsApp
+    const newWindow = window.open(whatsappUrl, '_blank');
     
-    if (success) {
-      // Vider le panier et fermer seulement si WhatsApp s'ouvre
-      clearCart();
-      setShowCheckoutForm(false);
-      setOrderDetails({ name: '', time: '' });
-      toggleCart();
+    // Vérifier si la fenêtre s'est ouverte après un délai
+    setTimeout(() => {
+      if (newWindow && !newWindow.closed) {
+        // WhatsApp s'est ouvert avec succès
+        clearCart();
+        setShowCheckoutForm(false);
+        setOrderDetails({ name: '', time: '' });
+        toggleCart();
+      } else {
+        // Fallback : proposer de copier le message
+        if (navigator.clipboard) {
+          navigator.clipboard.writeText(message).then(() => {
+            alert(`Message copié ! Envoyez-le manuellement au 06 66 53 30 99 sur WhatsApp.`);
+          }).catch(() => {
+            alert(`WhatsApp n'a pas pu s'ouvrir. Envoyez ce message au 06 66 53 30 99 :\n\n${message}`);
+          });
+        } else {
+          alert(`WhatsApp n'a pas pu s'ouvrir. Envoyez ce message au 06 66 53 30 99 :\n\n${message}`);
+        }
+      }
+    }, 1000);
+  };
+
+  const handleCopyMessage = () => {
+    const itemsList = items.map(item => 
+      `${item.quantity}x ${item.name} (${item.price})`
+    ).join('\n');
+    
+    const total = getTotalPrice().toFixed(2);
+    const message = `🍽️ NOUVELLE COMMANDE - Restaurant Le Club
+
+👤 Nom: ${orderDetails.name}
+🕐 Heure: ${orderDetails.time}
+
+📋 COMMANDE:
+${itemsList}
+
+💰 TOTAL: ${total}€
+
+📍 Service sur place
+41 Rue de Rondelet, 34970 Lattes
+
+Merci de confirmer la disponibilité.`;
+
+    if (navigator.clipboard) {
+      navigator.clipboard.writeText(message).then(() => {
+        alert('Message copié ! Collez-le dans WhatsApp au 06 66 53 30 99');
+        clearCart();
+        setShowCheckoutForm(false);
+        setOrderDetails({ name: '', time: '' });
+        toggleCart();
+      });
     } else {
-      // Fallback si WhatsApp ne s'ouvre pas
-      alert('Impossible d\'ouvrir WhatsApp. Veuillez copier ce message et l\'envoyer au 06 66 53 30 99 :\n\n' + message);
+      alert(`Copiez ce message et envoyez-le au 06 66 53 30 99 :\n\n${message}`);
     }
   };
 
