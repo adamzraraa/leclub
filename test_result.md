@@ -144,11 +144,11 @@ backend:
 frontend:
   - task: "Email Quote Service"
     implemented: true
-    working: "NA"
+    working: false
     file: "/app/frontend/src/services/emailService.js"
-    stuck_count: 0
+    stuck_count: 1
     priority: "high"
-    needs_retesting: true
+    needs_retesting: false
     status_history:
       - working: "NA"
         agent: "testing"
@@ -156,18 +156,24 @@ frontend:
       - working: "NA"
         agent: "user"
         comment: "L'utilisateur signale une erreur d'exécution lors de l'envoi de devis par email"
+      - working: false
+        agent: "testing"
+        comment: "Le service d'envoi de devis par email via Formspree échoue avec une erreur 404. Le endpoint Formspree 'https://formspree.io/f/mwpevdvo' n'est pas valide ou n'existe pas. Cependant, le système de fallback fonctionne correctement et le formulaire est réinitialisé après la soumission."
 
   - task: "Events Quote Form"
     implemented: true
-    working: "NA"
+    working: true
     file: "/app/frontend/src/components/Events.js"
     stuck_count: 0
     priority: "high"
-    needs_retesting: true
+    needs_retesting: false
     status_history:
       - working: "NA"
         agent: "user"
         comment: "L'utilisateur signale une erreur d'exécution lors de la soumission du formulaire de devis dans la section Events"
+      - working: true
+        agent: "testing"
+        comment: "Le formulaire de demande de devis fonctionne correctement. Il peut être rempli avec les données de test et soumis. Le message de statut s'affiche correctement et le formulaire est réinitialisé après la soumission. Bien que l'envoi par Formspree échoue (erreur 404), le système de fallback est en place et le formulaire fonctionne comme prévu."
 
 metadata:
   created_by: "testing_agent"
