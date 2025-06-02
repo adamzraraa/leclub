@@ -66,6 +66,67 @@ Restaurant Le Club
   }
 };
 
+// Fonction principale pour envoyer les devis par email via Formspree
+export const sendQuoteByEmail = async (formData) => {
+  try {
+    // Utiliser Formspree pour l'envoi d'email - service gratuit et fiable
+    const response = await fetch('https://formspree.io/f/xkndvzqa', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        _to: 'restaurant.traiteur.leclub@gmail.com',
+        _subject: `🎉 Nouvelle demande de devis ${formData.eventType} - ${formData.name}`,
+        name: formData.name,
+        email: formData.email,
+        phone: formData.phone,
+        eventType: formData.eventType,
+        date: formData.date,
+        guests: formData.guests,
+        message: formData.message,
+        _template: 'box',
+        formatted_message: `
+🎉 NOUVELLE DEMANDE DE DEVIS ÉVÉNEMENT
+Restaurant Le Club
+
+=== INFORMATIONS CLIENT ===
+👤 Nom: ${formData.name}
+📧 Email: ${formData.email}
+📞 Téléphone: ${formData.phone}
+
+=== DÉTAILS DE L'ÉVÉNEMENT ===
+🎊 Type d'événement: ${formData.eventType}
+📅 Date souhaitée: ${formData.date}
+👥 Nombre d'invités: ${formData.guests}
+
+=== MESSAGE DU CLIENT ===
+💬 ${formData.message}
+
+=== À FAIRE ===
+- Préparer un devis personnalisé
+- Contacter le client par email ou téléphone
+- Proposer un rendez-vous si nécessaire
+
+📍 Restaurant Le Club
+41 Rue de Rondelet, 34970 Lattes
+📞 06 66 53 30 99
+        `
+      })
+    });
+
+    if (response.ok) {
+      console.log('Email envoyé avec succès via Formspree');
+      return { success: true, method: 'email' };
+    } else {
+      throw new Error(`Erreur Formspree: ${response.status}`);
+    }
+  } catch (error) {
+    console.error('Erreur envoi email:', error);
+    return { success: false, error, method: 'email' };
+  }
+};
+
 // Fonction de fallback qui utilise un service email public (formspree ou similaire)
 export const sendEmailFallback = async (formData) => {
   try {
