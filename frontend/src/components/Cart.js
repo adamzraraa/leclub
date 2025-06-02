@@ -55,41 +55,19 @@ ${itemsList}
 
 Merci de confirmer la disponibilité.`;
     
-    // Essayer plusieurs formats de numéro WhatsApp
-    const phoneFormats = [
-      "33666533099",    // Format international
-      "+33666533099",   // Avec le +
-      "0666533099"      // Format national
-    ];
-    
-    // Essayer d'ouvrir WhatsApp avec le premier format
-    let whatsappUrl = `https://wa.me/${phoneFormats[0]}?text=${encodeURIComponent(message)}`;
-    console.log('Tentative WhatsApp:', whatsappUrl);
+    // Format international correct pour WhatsApp
+    const whatsappUrl = `https://wa.me/33666533099?text=${encodeURIComponent(message)}`;
+    console.log('WhatsApp URL:', whatsappUrl);
     
     // Ouvrir WhatsApp
-    const newWindow = window.open(whatsappUrl, '_blank');
+    window.open(whatsappUrl, '_blank');
     
-    // Vérifier si la fenêtre s'est ouverte après un délai
-    setTimeout(() => {
-      if (newWindow && !newWindow.closed) {
-        // WhatsApp s'est ouvert avec succès
-        clearCart();
-        setShowCheckoutForm(false);
-        setOrderDetails({ name: '', time: '' });
-        toggleCart();
-      } else {
-        // Fallback : proposer de copier le message
-        if (navigator.clipboard) {
-          navigator.clipboard.writeText(message).then(() => {
-            alert(`Message copié ! Envoyez-le manuellement au 06 66 53 30 99 sur WhatsApp.`);
-          }).catch(() => {
-            alert(`WhatsApp n'a pas pu s'ouvrir. Envoyez ce message au 06 66 53 30 99 :\n\n${message}`);
-          });
-        } else {
-          alert(`WhatsApp n'a pas pu s'ouvrir. Envoyez ce message au 06 66 53 30 99 :\n\n${message}`);
-        }
-      }
-    }, 1000);
+    // Nettoyer immédiatement après avoir tenté d'ouvrir WhatsApp
+    alert('Commande envoyée vers WhatsApp ! Vérifiez que l\'application s\'est ouverte.');
+    clearCart();
+    setShowCheckoutForm(false);
+    setOrderDetails({ name: '', time: '' });
+    toggleCart();
   };
 
   const handleCopyMessage = () => {
