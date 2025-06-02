@@ -412,7 +412,7 @@ const Menu = () => {
                         onClick={() => handleAddToCart(item, activeCategory)}
                         className="bg-gradient-to-r from-amber-600 to-red-600 text-white px-4 py-2 rounded-full text-sm font-semibold hover:shadow-lg transition-all duration-300"
                       >
-                        Commander
+                        Ajouter au panier
                       </motion.button>
                     )}
                   </div>
