@@ -414,7 +414,8 @@ Merci de me contacter pour finaliser mon événement.`;
                 <motion.button
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
-                  className={`w-full py-3 rounded-full font-semibold transition-all duration-300 ${
+                  onClick={() => handleSelectPackage(pkg)}
+                  className={`w-full py-3 rounded-full font-semibold transition-all duration-300 cursor-pointer ${
                     pkg.popular
                       ? 'bg-gradient-to-r from-amber-600 to-red-600 text-white shadow-lg'
                       : 'border-2 border-amber-600 text-amber-600 hover:bg-amber-600 hover:text-white'
