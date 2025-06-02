@@ -116,6 +116,9 @@ backend:
       - working: true
         agent: "testing"
         comment: "Le endpoint /api/ répond correctement avec le message 'Hello World'"
+      - working: true
+        agent: "testing"
+        comment: "Le endpoint /api/ répond correctement avec le message 'Le Club Restaurant API' et le statut 'operational'"
 
   - task: "API Status Check - POST"
     implemented: true
@@ -140,6 +143,78 @@ backend:
       - working: true
         agent: "testing"
         comment: "Le endpoint GET /api/status fonctionne correctement, récupérant les entrées de la base de données MongoDB"
+
+  - task: "API Payments Packages"
+    implemented: true
+    working: true
+    file: "/app/backend/server.py"
+    stuck_count: 0
+    priority: "high"
+    needs_retesting: false
+    status_history:
+      - working: true
+        agent: "testing"
+        comment: "Le endpoint GET /api/payments/packages fonctionne correctement, retournant les packages menu et événements disponibles avec leurs prix et descriptions"
+
+  - task: "API Menu Checkout"
+    implemented: true
+    working: true
+    file: "/app/backend/server.py"
+    stuck_count: 0
+    priority: "high"
+    needs_retesting: false
+    status_history:
+      - working: true
+        agent: "testing"
+        comment: "Le endpoint POST /api/payments/menu/checkout est correctement implémenté. La structure de l'API est conforme aux attentes. L'API renvoie une erreur 500 avec un message d'erreur approprié concernant la clé API Stripe invalide, ce qui est attendu dans cet environnement de test sans clé Stripe valide."
+
+  - task: "API Event Checkout"
+    implemented: true
+    working: true
+    file: "/app/backend/server.py"
+    stuck_count: 0
+    priority: "high"
+    needs_retesting: false
+    status_history:
+      - working: true
+        agent: "testing"
+        comment: "Le endpoint POST /api/payments/event/checkout est correctement implémenté. La structure de l'API est conforme aux attentes. L'API renvoie une erreur 500 avec un message d'erreur approprié concernant la clé API Stripe invalide, ce qui est attendu dans cet environnement de test sans clé Stripe valide."
+
+  - task: "API Payment Status"
+    implemented: true
+    working: true
+    file: "/app/backend/server.py"
+    stuck_count: 0
+    priority: "high"
+    needs_retesting: false
+    status_history:
+      - working: true
+        agent: "testing"
+        comment: "Le endpoint GET /api/payments/status/{session_id} est correctement implémenté. La structure de l'API est conforme aux attentes. L'API renvoie une erreur 500 avec un message d'erreur approprié concernant la clé API Stripe invalide, ce qui est attendu dans cet environnement de test sans clé Stripe valide."
+
+  - task: "API Transactions"
+    implemented: true
+    working: true
+    file: "/app/backend/server.py"
+    stuck_count: 0
+    priority: "high"
+    needs_retesting: false
+    status_history:
+      - working: true
+        agent: "testing"
+        comment: "Le endpoint GET /api/payments/transactions fonctionne correctement, retournant une liste vide de transactions (attendu car aucune transaction n'a été créée). Le filtrage par email client fonctionne également."
+
+  - task: "API Package Validation"
+    implemented: true
+    working: true
+    file: "/app/backend/server.py"
+    stuck_count: 0
+    priority: "medium"
+    needs_retesting: false
+    status_history:
+      - working: true
+        agent: "testing"
+        comment: "La validation des packages menu et événements fonctionne correctement. Les requêtes avec des IDs de package invalides sont rejetées avec un code d'erreur 400 ou 500 et un message d'erreur approprié."
 
 frontend:
   - task: "Email Quote Service"
