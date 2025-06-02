@@ -275,7 +275,13 @@ metadata:
   run_ui: true
 
 test_plan:
-  current_focus: []
+  current_focus: 
+    - "API Payments Packages"
+    - "API Menu Checkout"
+    - "API Event Checkout"
+    - "API Payment Status"
+    - "API Transactions"
+    - "API Package Validation"
   stuck_tasks: []
   test_all: false
   test_priority: "high_first"
