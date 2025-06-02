@@ -148,23 +148,37 @@ frontend:
     file: "/app/frontend/src/services/emailService.js"
     stuck_count: 0
     priority: "high"
-    needs_retesting: false
+    needs_retesting: true
     status_history:
       - working: "NA"
         agent: "testing"
         comment: "Le service d'envoi de devis par email via Formspree a été implémenté, mais n'a pas été testé car le focus est sur le backend"
+      - working: "NA"
+        agent: "user"
+        comment: "L'utilisateur signale une erreur d'exécution lors de l'envoi de devis par email"
+
+  - task: "Events Quote Form"
+    implemented: true
+    working: "NA"
+    file: "/app/frontend/src/components/Events.js"
+    stuck_count: 0
+    priority: "high"
+    needs_retesting: true
+    status_history:
+      - working: "NA"
+        agent: "user"
+        comment: "L'utilisateur signale une erreur d'exécution lors de la soumission du formulaire de devis dans la section Events"
 
 metadata:
   created_by: "testing_agent"
   version: "1.0"
-  test_sequence: 1
-  run_ui: false
+  test_sequence: 2
+  run_ui: true
 
 test_plan:
   current_focus:
-    - "API Health Check"
-    - "API Status Check - POST"
-    - "API Status Check - GET"
+    - "Email Quote Service"
+    - "Events Quote Form"
   stuck_tasks: []
   test_all: false
   test_priority: "high_first"
@@ -172,3 +186,5 @@ test_plan:
 agent_communication:
   - agent: "testing"
     message: "J'ai testé tous les endpoints backend et ils fonctionnent correctement. Le backend est opérationnel et répond aux requêtes API comme prévu. Les tests ont vérifié que les endpoints /api/, POST /api/status et GET /api/status fonctionnent correctement avec la base de données MongoDB."
+  - agent: "testing"
+    message: "Je vais maintenant tester le formulaire de demande de devis dans la section Events et vérifier le fonctionnement de l'envoi par email via Formspree avec fallback WhatsApp."
