@@ -193,3 +193,5 @@ agent_communication:
     message: "J'ai testé tous les endpoints backend et ils fonctionnent correctement. Le backend est opérationnel et répond aux requêtes API comme prévu. Les tests ont vérifié que les endpoints /api/, POST /api/status et GET /api/status fonctionnent correctement avec la base de données MongoDB."
   - agent: "testing"
     message: "Je vais maintenant tester le formulaire de demande de devis dans la section Events et vérifier le fonctionnement de l'envoi par email via Formspree avec fallback WhatsApp."
+  - agent: "testing"
+    message: "J'ai testé le formulaire de demande de devis dans la section Events. Le formulaire fonctionne correctement et peut être rempli et soumis. Cependant, l'envoi par Formspree échoue avec une erreur 404 car le endpoint 'https://formspree.io/f/mwpevdvo' n'est pas valide ou n'existe pas. Malgré cela, le système de fallback fonctionne correctement et le formulaire est réinitialisé après la soumission. Il faudrait corriger l'ID du formulaire Formspree pour que l'envoi par email fonctionne correctement."
