@@ -81,6 +81,8 @@ Merci de me contacter pour finaliser mon événement.`;
       setSubmitStatus({ type: '', message: '' });
     }, 4000);
   };
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
     setIsSubmitting(true);
     setSubmitStatus({ type: '', message: '' });
