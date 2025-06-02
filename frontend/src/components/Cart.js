@@ -43,7 +43,7 @@ const Cart = () => {
     const message = `🍽️ NOUVELLE COMMANDE - Restaurant Le Club
 
 👤 Nom: ${orderDetails.name}
-🕐 Heure de réservation: ${orderDetails.time}
+🕐 Heure: ${orderDetails.time}
 
 📋 COMMANDE:
 ${itemsList}
@@ -55,17 +55,25 @@ ${itemsList}
 
 Merci de confirmer la disponibilité.`;
     
+    // Formater le numéro pour WhatsApp (enlever les espaces et ajouter +33)
+    const phoneNumber = "33666533099"; // Format international sans le + pour WhatsApp
+    const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
+    
+    console.log('WhatsApp URL:', whatsappUrl); // Pour debug
+    
     // Ouvrir WhatsApp avec la commande
-    const phone = "0666533099";
-    const whatsappUrl = `https://wa.me/${phone}?text=${encodeURIComponent(message)}`;
+    const success = window.open(whatsappUrl, '_blank');
     
-    window.open(whatsappUrl, '_blank');
-    
-    // Vider le panier et fermer
-    clearCart();
-    setShowCheckoutForm(false);
-    setOrderDetails({ name: '', time: '' });
-    toggleCart();
+    if (success) {
+      // Vider le panier et fermer seulement si WhatsApp s'ouvre
+      clearCart();
+      setShowCheckoutForm(false);
+      setOrderDetails({ name: '', time: '' });
+      toggleCart();
+    } else {
+      // Fallback si WhatsApp ne s'ouvre pas
+      alert('Impossible d\'ouvrir WhatsApp. Veuillez copier ce message et l\'envoyer au 06 66 53 30 99 :\n\n' + message);
+    }
   };
 
   const handleShowCheckoutForm = () => {
