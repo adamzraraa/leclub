@@ -122,7 +122,7 @@ def test_menu_checkout_structure():
         assert response.status_code in [200, 400, 500]
         
         # If we get a 500 error due to Stripe API key, that's expected in this test environment
-        if response.status_code == 500 and "Stripe" in str(response.json()):
+        if response.status_code == 500 and "Invalid API Key" in str(response.json()):
             print("✅ POST /api/payments/menu/checkout endpoint structure test passed (Stripe API error expected)")
             return True
         elif response.status_code == 200:
