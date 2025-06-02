@@ -177,6 +177,18 @@ frontend:
       - working: true
         agent: "testing"
         comment: "Le formulaire de demande de devis fonctionne correctement. Il peut être rempli avec les données de test et soumis. Le message de statut s'affiche correctement et le formulaire est réinitialisé après la soumission. Bien que l'envoi par Formspree échoue (erreur 404), le système de fallback est en place et le formulaire fonctionne comme prévu."
+        
+  - task: "Modification du texte du bouton WhatsApp dans le panier"
+    implemented: true
+    working: "NA"
+    file: "/app/frontend/src/components/Cart.js"
+    stuck_count: 0
+    priority: "medium"
+    needs_retesting: true
+    status_history:
+      - working: "NA"
+        agent: "user"
+        comment: "L'utilisateur a modifié le texte du bouton de finalisation de commande dans le panier, passant de 'Commander sur WhatsApp' à 'Envoyer ma commande sur WhatsApp' à la ligne 293 du fichier Cart.js"
 
 metadata:
   created_by: "testing_agent"
