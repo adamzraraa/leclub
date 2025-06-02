@@ -50,17 +50,43 @@ const Events = () => {
     setIsSubmitting(true);
     setSubmitStatus({ type: '', message: '' });
 
+    // Créer un message WhatsApp pour le devis événement
+    const message = `🎉 DEMANDE DE DEVIS ÉVÉNEMENT - Restaurant Le Club
+
+👤 INFORMATIONS CLIENT:
+Nom: ${formData.name}
+Email: ${formData.email}
+Téléphone: ${formData.phone}
+
+🎊 DÉTAILS DE L'ÉVÉNEMENT:
+Type: ${formData.eventType}
+Date souhaitée: ${formData.date}
+Nombre d'invités: ${formData.guests}
+
+💬 MESSAGE:
+${formData.message}
+
+📍 Restaurant Le Club
+41 Rue de Rondelet, 34970 Lattes
+
+Merci de préparer un devis personnalisé.`;
+
+    // Ouvrir WhatsApp avec le devis
+    const whatsappUrl = `https://wa.me/33666533099?text=${encodeURIComponent(message)}`;
+    console.log('WhatsApp Devis URL:', whatsappUrl);
+    
     try {
-      // Tentative d'envoi via EmailJS
-      const result = await sendEventQuote(formData);
+      // Ouvrir WhatsApp
+      window.open(whatsappUrl, '_blank');
       
-      if (result.success) {
-        setSubmitStatus({ 
-          type: 'success', 
-          message: 'Votre demande de devis a été envoyée avec succès ! Nous vous contacterons dans les plus brefs délais.' 
-        });
-        
-        // Reset du formulaire
+      // Afficher message de succès
+      setSubmitStatus({ 
+        type: 'success', 
+        message: 'Votre demande de devis a été envoyée sur WhatsApp ! Nous vous contacterons rapidement.' 
+      });
+      
+      // Reset du formulaire après 2 secondes
+      setTimeout(() => {
         setFormData({
           name: '',
           email: '',
@@ -70,24 +96,14 @@ const Events = () => {
           guests: '',
           message: ''
         });
-      } else {
-        // Fallback avec mailto
-        const mailtoLink = createMailtoLink(formData, true);
-        window.location.href = mailtoLink;
-        
-        setSubmitStatus({ 
-          type: 'info', 
-          message: 'Votre client mail va s\'ouvrir avec votre demande pré-remplie. Envoyez-la pour finaliser votre demande de devis.' 
-        });
-      }
-    } catch (error) {
-      // Fallback avec mailto en cas d'erreur
-      const mailtoLink = createMailtoLink(formData, true);
-      window.location.href = mailtoLink;
+        setSubmitStatus({ type: '', message: '' });
+      }, 2000);
       
+    } catch (error) {
+      // Fallback si problème
       setSubmitStatus({ 
-        type: 'info', 
-        message: 'Votre client mail va s\'ouvrir avec votre demande pré-remplie. Envoyez-la pour finaliser votre demande de devis.' 
+        type: 'error', 
+        message: 'Erreur lors de l\'ouverture de WhatsApp. Appelez directement le 06 66 53 30 99.' 
       });
     } finally {
       setIsSubmitting(false);
