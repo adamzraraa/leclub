@@ -295,8 +295,15 @@ Merci de confirmer la disponibilité.`;
                         className="w-full bg-gradient-to-r from-amber-600 to-red-600 text-white py-4 rounded-xl font-semibold text-lg shadow-lg hover:shadow-xl transition-all duration-300 flex items-center justify-center space-x-2"
                       >
                         <Send className="w-5 h-5" />
-                        <span>Envoyer la commande</span>
+                        <span>Envoyer sur WhatsApp</span>
                       </motion.button>
+                      
+                      <button
+                        onClick={handleCopyMessage}
+                        className="w-full border-2 border-amber-600 text-amber-600 py-3 rounded-xl font-semibold hover:bg-amber-50 transition-colors duration-200 text-sm"
+                      >
+                        📋 Copier le message (si WhatsApp ne marche pas)
+                      </button>
                     </div>
                   ) : (
                     <motion.button
