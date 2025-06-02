@@ -1,14 +1,17 @@
 import emailjs from '@emailjs/browser';
 
-// Configuration EmailJS
-const EMAILJS_SERVICE_ID = 'service_restaurant'; // À configurer dans EmailJS
-const EMAILJS_TEMPLATE_ID = 'template_devis';    // À configurer dans EmailJS  
-const EMAILJS_PUBLIC_KEY = 'your_public_key';    // À configurer dans EmailJS
+// Configuration EmailJS pour envoi automatique
+const EMAILJS_SERVICE_ID = 'service_restaurant_leclub';
+const EMAILJS_TEMPLATE_ID = 'template_devis_leclub';    
+const EMAILJS_PUBLIC_KEY = 'YOUR_PUBLIC_KEY_HERE';
 
-// Fonction pour envoyer un devis événement
+// Fonction pour envoyer un devis événement automatiquement
 export const sendEventQuote = async (formData) => {
   try {
-    // Préparation des données pour l'email
+    // Initialiser EmailJS
+    emailjs.init(EMAILJS_PUBLIC_KEY);
+
+    // Préparation des données pour l'email automatique
     const emailData = {
       to_email: 'restaurant.traiteur.leclub@gmail.com',
       from_name: formData.name,
@@ -18,96 +21,66 @@ export const sendEventQuote = async (formData) => {
       event_date: formData.date,
       guests_count: formData.guests,
       message: formData.message,
-      subject: `Demande de devis - ${formData.eventType} - ${formData.name}`,
-      // Formatage du message complet
+      subject: `Demande de devis ${formData.eventType} - ${formData.name}`,
+      // Message formaté
       formatted_message: `
-        NOUVELLE DEMANDE DE DEVIS ÉVÉNEMENT
-        
-        === INFORMATIONS CLIENT ===
-        Nom: ${formData.name}
-        Email: ${formData.email}
-        Téléphone: ${formData.phone}
-        
-        === DÉTAILS DE L'ÉVÉNEMENT ===
-        Type d'événement: ${formData.eventType}
-        Date souhaitée: ${formData.date}
-        Nombre d'invités: ${formData.guests}
-        
-        === MESSAGE ===
-        ${formData.message}
-        
-        === CONTACT ===
-        Cette demande a été envoyée depuis le site web du Restaurant Le Club.
-        Répondez directement à ${formData.email} ou appelez le ${formData.phone}.
+NOUVELLE DEMANDE DE DEVIS ÉVÉNEMENT
+Restaurant Le Club
+
+=== INFORMATIONS CLIENT ===
+Nom: ${formData.name}
+Email: ${formData.email}
+Téléphone: ${formData.phone}
+
+=== DÉTAILS DE L'ÉVÉNEMENT ===
+Type d'événement: ${formData.eventType}
+Date souhaitée: ${formData.date}
+Nombre d'invités: ${formData.guests}
+
+=== MESSAGE DU CLIENT ===
+${formData.message}
+
+=== À FAIRE ===
+- Préparer un devis personnalisé
+- Contacter le client par email ou téléphone
+- Proposer un rendez-vous si nécessaire
+
+Restaurant Le Club
+41 Rue de Rondelet, 34970 Lattes
+06 66 53 30 99
       `
     };
 
-    // Envoi via EmailJS
+    // Envoi automatique via EmailJS
     const response = await emailjs.send(
       EMAILJS_SERVICE_ID,
       EMAILJS_TEMPLATE_ID,
-      emailData,
-      EMAILJS_PUBLIC_KEY
+      emailData
     );
 
+    console.log('Email envoyé avec succès:', response);
     return { success: true, response };
   } catch (error) {
-    console.error('Erreur lors de l\'envoi du devis:', error);
+    console.error('Erreur lors de l\'envoi de l\'email:', error);
     return { success: false, error };
   }
 };
 
-// Fonction pour envoyer un message de contact général
-export const sendContactMessage = async (formData) => {
+// Fonction de fallback qui utilise un service email public (formspree ou similaire)
+export const sendEmailFallback = async (formData) => {
   try {
-    const emailData = {
-      to_email: 'restaurant.traiteur.leclub@gmail.com',
-      from_name: formData.name,
-      from_email: formData.email,
-      phone: formData.phone,
-      subject_type: formData.subject,
-      message: formData.message,
-      subject: `Contact Restaurant Le Club - ${formData.subject} - ${formData.name}`,
-      formatted_message: `
-        NOUVEAU MESSAGE DE CONTACT
-        
-        === INFORMATIONS CLIENT ===
-        Nom: ${formData.name}
-        Email: ${formData.email}
-        Téléphone: ${formData.phone || 'Non renseigné'}
-        Sujet: ${formData.subject}
-        
-        === MESSAGE ===
-        ${formData.message}
-        
-        === CONTACT ===
-        Cette demande a été envoyée depuis le site web du Restaurant Le Club.
-        Répondez directement à ${formData.email}${formData.phone ? ' ou appelez le ' + formData.phone : ''}.
-      `
-    };
-
-    const response = await emailjs.send(
-      EMAILJS_SERVICE_ID,
-      EMAILJS_TEMPLATE_ID,
-      emailData,
-      EMAILJS_PUBLIC_KEY
-    );
-
-    return { success: true, response };
-  } catch (error) {
-    console.error('Erreur lors de l\'envoi du message:', error);
-    return { success: false, error };
-  }
-};
-
-// Fonction de fallback qui crée un mailto: avec toutes les informations
-export const createMailtoLink = (formData, isEvent = false) => {
-  const subject = isEvent 
-    ? `Demande de devis - ${formData.eventType} - ${formData.name}`
-    : `Contact Restaurant Le Club - ${formData.subject} - ${formData.name}`;
-  
-  const body = isEvent 
-    ? `DEMANDE DE DEVIS ÉVÉNEMENT
+    // Utiliser un service de formulaire public comme Formspree
+    const response = await fetch('https://formspree.io/f/xkndvzqa', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        to: 'restaurant.traiteur.leclub@gmail.com',
+        subject: `Demande de devis ${formData.eventType} - ${formData.name}`,
+        message: `
+NOUVELLE DEMANDE DE DEVIS ÉVÉNEMENT
+Restaurant Le Club
 
 INFORMATIONS CLIENT:
 Nom: ${formData.name}
@@ -115,22 +88,51 @@ Email: ${formData.email}
 Téléphone: ${formData.phone}
 
 DÉTAILS DE L'ÉVÉNEMENT:
-Type d'événement: ${formData.eventType}
+Type: ${formData.eventType}
+Date: ${formData.date}
+Invités: ${formData.guests}
+
+MESSAGE:
+${formData.message}
+
+Restaurant Le Club - 41 Rue de Rondelet, 34970 Lattes
+        `,
+        email: formData.email,
+        name: formData.name
+      })
+    });
+
+    if (response.ok) {
+      return { success: true };
+    } else {
+      throw new Error('Erreur du service email');
+    }
+  } catch (error) {
+    console.error('Erreur fallback email:', error);
+    return { success: false, error };
+  }
+};
+
+// Fonction de fallback WhatsApp si les emails ne marchent pas
+export const createWhatsAppFallback = (formData) => {
+  const message = `🎉 DEMANDE DE DEVIS ÉVÉNEMENT - Restaurant Le Club
+
+👤 INFORMATIONS CLIENT:
+Nom: ${formData.name}
+Email: ${formData.email}
+Téléphone: ${formData.phone}
+
+🎊 DÉTAILS DE L'ÉVÉNEMENT:
+Type: ${formData.eventType}
 Date souhaitée: ${formData.date}
 Nombre d'invités: ${formData.guests}
 
-MESSAGE:
-${formData.message}`
-    : `MESSAGE DE CONTACT
+💬 MESSAGE:
+${formData.message}
 
-INFORMATIONS:
-Nom: ${formData.name}
-Email: ${formData.email}
-Téléphone: ${formData.phone || 'Non renseigné'}
-Sujet: ${formData.subject}
+📍 Restaurant Le Club
+41 Rue de Rondelet, 34970 Lattes`;
 
-MESSAGE:
-${formData.message}`;
-
-  return `mailto:restaurant.traiteur.leclub@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+  const whatsappUrl = `https://wa.me/33666533099?text=${encodeURIComponent(message)}`;
+  return whatsappUrl;
 };
