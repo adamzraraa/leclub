@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Heart, Users, Calendar, Star, Phone, Mail, CheckCircle, AlertCircle, Loader, X, ChevronLeft, ChevronRight } from 'lucide-react';
-import { sendEventQuote, createMailtoLink } from '../services/emailService';
+import { sendEventQuote, sendEmailFallback, createWhatsAppFallback } from '../services/emailService';
 
 const Events = () => {
   const [formData, setFormData] = useState({
