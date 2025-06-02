@@ -6,7 +6,11 @@ from typing import Optional, Dict, List
 import os
 import datetime
 import uuid
+from dotenv import load_dotenv
 from emergentintegrations.payments.stripe.checkout import StripeCheckout, CheckoutSessionResponse, CheckoutStatusResponse, CheckoutSessionRequest
+
+# Load environment variables from .env file
+load_dotenv()
 
 app = FastAPI()
 
