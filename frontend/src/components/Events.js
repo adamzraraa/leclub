@@ -61,10 +61,17 @@ const Events = () => {
       
       if (emailResult.success) {
         // Email envoyé avec succès
-        setSubmitStatus({ 
-          type: 'success', 
-          message: '✅ Votre demande de devis a été envoyée par email ! Nous vous contacterons rapidement.' 
-        });
+        if (emailResult.method === 'formspree') {
+          setSubmitStatus({ 
+            type: 'success', 
+            message: '✅ Votre demande de devis a été envoyée directement par email ! Nous vous contacterons rapidement.' 
+          });
+        } else if (emailResult.method === 'mailto') {
+          setSubmitStatus({ 
+            type: 'success', 
+            message: '📧 Votre client email s\'est ouvert avec la demande de devis ! Cliquez sur "Envoyer" pour finaliser l\'envoi.' 
+          });
+        }
         
         // Reset du formulaire après succès
         setTimeout(() => {
@@ -78,11 +85,11 @@ const Events = () => {
             message: ''
           });
           setSubmitStatus({ type: '', message: '' });
-        }, 3000);
+        }, 4000);
         
       } else {
-        // Si l'email échoue, utiliser WhatsApp comme fallback
-        console.warn('Email failed, using WhatsApp fallback');
+        // Si l'email échoue complètement, utiliser WhatsApp comme fallback
+        console.warn('Toutes les méthodes email ont échoué, utilisation de WhatsApp');
         
         setSubmitStatus({ 
           type: 'info', 
@@ -111,7 +118,7 @@ const Events = () => {
               message: ''
             });
             setSubmitStatus({ type: '', message: '' });
-          }, 2000);
+          }, 3000);
         }, 1500);
       }
       
@@ -132,6 +139,20 @@ const Events = () => {
           type: 'success', 
           message: '📱 Votre demande a été envoyée sur WhatsApp ! Nous vous contacterons rapidement.' 
         });
+        
+        // Reset du formulaire
+        setTimeout(() => {
+          setFormData({
+            name: '',
+            email: '',
+            phone: '',
+            eventType: '',
+            date: '',
+            guests: '',
+            message: ''
+          });
+          setSubmitStatus({ type: '', message: '' });
+        }, 3000);
       }, 1000);
       
     } finally {
