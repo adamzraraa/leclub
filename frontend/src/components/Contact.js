@@ -27,36 +27,48 @@ const Contact = () => {
     setIsSubmitting(true);
     setSubmitStatus({ type: '', message: '' });
 
+    // Créer un message WhatsApp pour le contact
+    const message = `📞 NOUVEAU MESSAGE DE CONTACT - Restaurant Le Club
+
+👤 INFORMATIONS CLIENT:
+Nom: ${formData.name}
+Email: ${formData.email}
+Téléphone: ${formData.phone || 'Non renseigné'}
+Sujet: ${formData.subject}
+
+💬 MESSAGE:
+${formData.message}
+
+📍 Restaurant Le Club
+41 Rue de Rondelet, 34970 Lattes
+
+Merci de répondre au client.`;
+
+    // Ouvrir WhatsApp avec le message
+    const whatsappUrl = `https://wa.me/33666533099?text=${encodeURIComponent(message)}`;
+    console.log('WhatsApp Contact URL:', whatsappUrl);
+    
     try {
-      // Tentative d'envoi via EmailJS
-      const result = await sendContactMessage(formData);
+      // Ouvrir WhatsApp
+      window.open(whatsappUrl, '_blank');
       
-      if (result.success) {
-        setSubmitStatus({ 
-          type: 'success', 
-          message: 'Votre message a été envoyé avec succès ! Nous vous répondrons dans les plus brefs délais.' 
-        });
-        
-        // Reset du formulaire
-        setFormData({ name: '', email: '', phone: '', subject: '', message: '' });
-      } else {
-        // Fallback avec mailto
-        const mailtoLink = createMailtoLink(formData, false);
-        window.location.href = mailtoLink;
-        
-        setSubmitStatus({ 
-          type: 'info', 
-          message: 'Votre client mail va s\'ouvrir avec votre message pré-rempli. Envoyez-le pour finaliser votre demande.' 
-        });
-      }
-    } catch (error) {
-      // Fallback avec mailto en cas d'erreur
-      const mailtoLink = createMailtoLink(formData, false);
-      window.location.href = mailtoLink;
-      
+      // Afficher message de succès
       setSubmitStatus({ 
-        type: 'info', 
-        message: 'Votre client mail va s\'ouvrir avec votre message pré-rempli. Envoyez-le pour finaliser votre demande.' 
+        type: 'success', 
+        message: 'Votre message a été envoyé sur WhatsApp ! Nous vous répondrons rapidement.' 
+      });
+      
+      // Reset du formulaire après 2 secondes
+      setTimeout(() => {
+        setFormData({ name: '', email: '', phone: '', subject: '', message: '' });
+        setSubmitStatus({ type: '', message: '' });
+      }, 2000);
+      
+    } catch (error) {
+      // Fallback si problème
+      setSubmitStatus({ 
+        type: 'error', 
+        message: 'Erreur lors de l\'ouverture de WhatsApp. Appelez directement le 06 66 53 30 99.' 
       });
     } finally {
       setIsSubmitting(false);
