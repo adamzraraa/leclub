@@ -200,8 +200,7 @@ metadata:
   run_ui: true
 
 test_plan:
-  current_focus: 
-    - "Modification du texte du bouton WhatsApp dans le panier"
+  current_focus: []
   stuck_tasks: []
   test_all: false
   test_priority: "high_first"
