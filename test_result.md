@@ -102,7 +102,7 @@
 # Testing Data - Main Agent and testing sub agent both should log testing data below this section
 #====================================================================================================
 
-user_problem_statement: "L'application est un site web pour un restaurant marocain qui a un système de demande de devis pour événements. Le problème était que les devis n'étaient envoyés que par WhatsApp, pas par email. J'ai modifié le code pour d'abord essayer l'envoi par email via Formspree, puis utiliser WhatsApp comme fallback."
+user_problem_statement: "L'application est un site web pour un restaurant marocain qui a un système de demande de devis pour événements. Le problème était que les devis n'étaient envoyés que par WhatsApp, pas par email. J'ai modifié le code pour d'abord essayer l'envoi par email via Formspree, puis utiliser WhatsApp comme fallback. J'ai également implémenté un système de paiement complet avec Stripe pour l'application restaurant Le Club, permettant les paiements sécurisés (cartes bancaires, Apple Pay, Google Pay) pour les commandes menu et les demandes de devis événements."
 
 backend:
   - task: "API Health Check"
