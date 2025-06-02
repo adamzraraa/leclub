@@ -45,7 +45,42 @@ const Events = () => {
     });
   };
 
-  const handleSubmit = async (e) => {
+  // Fonction pour gérer la sélection d'une formule
+  const handleSelectPackage = (pkg) => {
+    // Pré-remplir le formulaire avec la formule choisie
+    const packageDetails = `Je souhaite un devis pour la formule "${pkg.name}" à ${pkg.price}.
+
+Services inclus :
+${pkg.features.map(feature => `• ${feature}`).join('\n')}
+
+Merci de me contacter pour finaliser mon événement.`;
+
+    setFormData(prev => ({
+      ...prev,
+      eventType: pkg.name,
+      message: packageDetails
+    }));
+
+    // Faire défiler vers le formulaire de devis
+    const formElement = document.getElementById('quote-form');
+    if (formElement) {
+      formElement.scrollIntoView({ 
+        behavior: 'smooth',
+        block: 'start'
+      });
+    }
+
+    // Afficher un message de confirmation
+    setSubmitStatus({
+      type: 'info',
+      message: `✨ Formule "${pkg.name}" sélectionnée ! Complétez vos informations ci-dessous pour recevoir votre devis.`
+    });
+
+    // Effacer le message après quelques secondes
+    setTimeout(() => {
+      setSubmitStatus({ type: '', message: '' });
+    }, 4000);
+  };
     e.preventDefault();
     setIsSubmitting(true);
     setSubmitStatus({ type: '', message: '' });
