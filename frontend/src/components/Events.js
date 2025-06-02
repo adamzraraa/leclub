@@ -60,16 +60,16 @@ const Events = () => {
       const emailResult = await sendQuoteByEmail(formData);
       
       if (emailResult.success) {
-        // Email envoyé avec succès
-        if (emailResult.method === 'formspree') {
+        // Email process réussi
+        if (emailResult.method === 'mailto') {
           setSubmitStatus({ 
             type: 'success', 
-            message: '✅ Votre demande de devis a été envoyée directement par email ! Nous vous contacterons rapidement.' 
+            message: '📧 Votre client email s\'est ouvert avec la demande de devis pré-remplie ! Cliquez sur "Envoyer" pour finaliser l\'envoi vers le restaurant.' 
           });
-        } else if (emailResult.method === 'mailto') {
+        } else {
           setSubmitStatus({ 
             type: 'success', 
-            message: '📧 Votre client email s\'est ouvert avec la demande de devis ! Cliquez sur "Envoyer" pour finaliser l\'envoi.' 
+            message: '✅ Votre demande de devis a été envoyée par email ! Nous vous contacterons rapidement.' 
           });
         }
         
