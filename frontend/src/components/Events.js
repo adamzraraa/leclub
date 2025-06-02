@@ -50,61 +50,90 @@ const Events = () => {
     setIsSubmitting(true);
     setSubmitStatus({ type: '', message: '' });
 
-    // Créer un message WhatsApp pour le devis événement
-    const message = `🎉 DEMANDE DE DEVIS ÉVÉNEMENT - Restaurant Le Club
-
-👤 INFORMATIONS CLIENT:
-Nom: ${formData.name}
-Email: ${formData.email}
-Téléphone: ${formData.phone}
-
-🎊 DÉTAILS DE L'ÉVÉNEMENT:
-Type: ${formData.eventType}
-Date souhaitée: ${formData.date}
-Nombre d'invités: ${formData.guests}
-
-💬 MESSAGE:
-${formData.message}
-
-📍 Restaurant Le Club
-41 Rue de Rondelet, 34970 Lattes
-
-Merci de préparer un devis personnalisé.`;
-
-    // Ouvrir WhatsApp avec le devis
-    const whatsappUrl = `https://wa.me/33666533099?text=${encodeURIComponent(message)}`;
-    console.log('WhatsApp Devis URL:', whatsappUrl);
-    
     try {
-      // Ouvrir WhatsApp
-      window.open(whatsappUrl, '_blank');
-      
-      // Afficher message de succès
+      // Étape 1: Essayer d'envoyer par email d'abord
       setSubmitStatus({ 
-        type: 'success', 
-        message: 'Votre demande de devis a été envoyée sur WhatsApp ! Nous vous contacterons rapidement.' 
+        type: 'info', 
+        message: '📧 Envoi du devis par email en cours...' 
       });
+
+      const emailResult = await sendQuoteByEmail(formData);
       
-      // Reset du formulaire après 2 secondes
-      setTimeout(() => {
-        setFormData({
-          name: '',
-          email: '',
-          phone: '',
-          eventType: '',
-          date: '',
-          guests: '',
-          message: ''
+      if (emailResult.success) {
+        // Email envoyé avec succès
+        setSubmitStatus({ 
+          type: 'success', 
+          message: '✅ Votre demande de devis a été envoyée par email ! Nous vous contacterons rapidement.' 
         });
-        setSubmitStatus({ type: '', message: '' });
-      }, 2000);
+        
+        // Reset du formulaire après succès
+        setTimeout(() => {
+          setFormData({
+            name: '',
+            email: '',
+            phone: '',
+            eventType: '',
+            date: '',
+            guests: '',
+            message: ''
+          });
+          setSubmitStatus({ type: '', message: '' });
+        }, 3000);
+        
+      } else {
+        // Si l'email échoue, utiliser WhatsApp comme fallback
+        console.warn('Email failed, using WhatsApp fallback');
+        
+        setSubmitStatus({ 
+          type: 'info', 
+          message: '📧 Email indisponible, redirection vers WhatsApp...' 
+        });
+        
+        // Attendre un peu avant de rediriger
+        setTimeout(() => {
+          const whatsappUrl = createWhatsAppFallback(formData);
+          window.open(whatsappUrl, '_blank');
+          
+          setSubmitStatus({ 
+            type: 'success', 
+            message: '📱 Votre demande a été envoyée sur WhatsApp ! Nous vous contacterons rapidement.' 
+          });
+          
+          // Reset du formulaire
+          setTimeout(() => {
+            setFormData({
+              name: '',
+              email: '',
+              phone: '',
+              eventType: '',
+              date: '',
+              guests: '',
+              message: ''
+            });
+            setSubmitStatus({ type: '', message: '' });
+          }, 2000);
+        }, 1500);
+      }
       
     } catch (error) {
-      // Fallback si problème
+      console.error('Erreur dans handleSubmit:', error);
+      
+      // En cas d'erreur complète, utiliser WhatsApp comme fallback ultime
       setSubmitStatus({ 
-        type: 'error', 
-        message: 'Erreur lors de l\'ouverture de WhatsApp. Appelez directement le 06 66 53 30 99.' 
+        type: 'info', 
+        message: '🔄 Redirection vers WhatsApp...' 
       });
+      
+      setTimeout(() => {
+        const whatsappUrl = createWhatsAppFallback(formData);
+        window.open(whatsappUrl, '_blank');
+        
+        setSubmitStatus({ 
+          type: 'success', 
+          message: '📱 Votre demande a été envoyée sur WhatsApp ! Nous vous contacterons rapidement.' 
+        });
+      }, 1000);
+      
     } finally {
       setIsSubmitting(false);
     }
