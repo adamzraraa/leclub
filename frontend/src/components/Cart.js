@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { X, Plus, Minus, ShoppingBag, Trash2, User, Clock, Send } from 'lucide-react';
 import { useCart } from '../context/CartContext';
+import PaymentButton from './PaymentButton';
+import PaymentService from '../services/paymentService';
 
 const Cart = () => {
   const { 
