@@ -286,14 +286,39 @@ Merci de confirmer la disponibilité.`;
                       </button>
                     </div>
                   ) : (
-                    <motion.button
-                      whileHover={{ scale: 1.02 }}
-                      whileTap={{ scale: 0.98 }}
-                      onClick={handleShowCheckoutForm}
-                      className="w-full bg-gradient-to-r from-amber-600 to-red-600 text-white py-4 rounded-xl font-semibold text-lg shadow-lg hover:shadow-xl transition-all duration-300"
-                    >
-                      Envoyer ma commande sur WhatsApp
-                    </motion.button>
+                    {/* Checkout Button - Paiement sécurisé */}
+                    <div>
+                      <PaymentButton
+                        type="menu"
+                        packageId="menu_complet" // Package global pour commandes cart
+                        packageInfo={{
+                          name: `Commande Le Club (${items.length} article${items.length > 1 ? 's' : ''})`,
+                          price: getTotalPrice(),
+                          description: `Commande contenant: ${items.map(item => item.name).join(', ')}`
+                        }}
+                        customerInfo={orderDetails}
+                        className="w-full py-4 px-6 rounded-xl text-lg font-semibold"
+                        onPaymentStart={() => {
+                          console.log('Démarrage du paiement pour commande cart');
+                        }}
+                        onPaymentError={(error) => {
+                          alert(`Erreur de paiement: ${error}`);
+                        }}
+                      >
+                        💳 Payer ma commande {PaymentService.formatAmount(getTotalPrice())}
+                      </PaymentButton>
+                      
+                      {/* Bouton WhatsApp alternatif */}
+                      <motion.button
+                        whileHover={{ scale: 1.02 }}
+                        whileTap={{ scale: 0.98 }}
+                        onClick={handleShowCheckoutForm}
+                        className="w-full mt-3 py-3 px-6 bg-green-600 text-white rounded-xl hover:bg-green-700 transition-all duration-300 font-medium flex items-center justify-center gap-2"
+                      >
+                        <span>📱</span>
+                        Ou commander sur WhatsApp
+                      </motion.button>
+                    </div>
                   )}
                   
                   <button
