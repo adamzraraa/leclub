@@ -412,18 +412,35 @@ Merci de me contacter pour finaliser mon événement.`;
                   ))}
                 </ul>
                 
-                <motion.button
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
-                  onClick={() => handleSelectPackage(pkg)}
-                  className={`w-full py-3 rounded-full font-semibold transition-all duration-300 cursor-pointer ${
-                    pkg.popular
-                      ? 'bg-gradient-to-r from-amber-600 to-red-600 text-white shadow-lg'
-                      : 'border-2 border-amber-600 text-amber-600 hover:bg-amber-600 hover:text-white'
-                  }`}
-                >
-                  Choisir cette formule
-                </motion.button>
+                <div className="space-y-3">
+                  <motion.button
+                    whileHover={{ scale: 1.05 }}
+                    whileTap={{ scale: 0.95 }}
+                    onClick={() => handleSelectPackage(pkg)}
+                    className={`w-full py-3 rounded-full font-semibold transition-all duration-300 cursor-pointer ${
+                      pkg.popular
+                        ? 'bg-gradient-to-r from-amber-600 to-red-600 text-white shadow-lg'
+                        : 'border-2 border-amber-600 text-amber-600 hover:bg-amber-600 hover:text-white'
+                    }`}
+                  >
+                    📋 Choisir cette formule
+                  </motion.button>
+                  
+                  <PaymentButton
+                    type="event"
+                    packageId={pkg.id}
+                    packageInfo={{
+                      name: pkg.name,
+                      price: pkg.price
+                    }}
+                    paymentType="deposit"
+                    guests={20} // Valeur par défaut, sera modifiée dans le formulaire
+                    eventDate={new Date(Date.now() + 30 * 24 * 60 * 60 * 1000).toISOString().split('T')[0]} // Dans 30 jours par défaut
+                    className="w-full py-3 rounded-full font-semibold"
+                  >
+                    💳 Réserver avec acompte 30%
+                  </PaymentButton>
+                </div>
               </motion.div>
             ))}
           </div>
