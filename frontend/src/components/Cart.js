@@ -1,7 +1,7 @@
 import React, { useContext, useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { X, Plus, Minus, ShoppingBag, Trash2, User, Clock, Send } from 'lucide-react';
-import { CartContext } from '../context/CartContext';
+import { useCart } from '../context/CartContext';
 import PaymentButton from './PaymentButton';
 import PaymentService from '../services/paymentService';
 
@@ -15,7 +15,7 @@ const Cart = () => {
     toggleCart, 
     getTotalItems, 
     getTotalPrice 
-  } = useContext(CartContext);
+  } = useCart();
 
   const [showCheckoutForm, setShowCheckoutForm] = useState(false);
   const [orderDetails, setOrderDetails] = useState({
