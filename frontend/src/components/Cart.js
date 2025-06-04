@@ -15,7 +15,7 @@ const Cart = () => {
     toggleCart, 
     getTotalItems, 
     getTotalPrice 
-  } = useCart();
+  } = useContext(CartContext);
 
   const [showCheckoutForm, setShowCheckoutForm] = useState(false);
   const [orderDetails, setOrderDetails] = useState({
