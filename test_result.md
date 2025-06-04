@@ -321,12 +321,9 @@ metadata:
 
 test_plan:
   current_focus: 
-    - "API Payments Packages"
-    - "API Menu Checkout"
-    - "API Event Checkout"
-    - "API Payment Status"
-    - "API Transactions"
-    - "API Package Validation"
+    - "Système de paiement Stripe - Menu"
+    - "Système de paiement Stripe - Événements"
+    - "Service de paiement"
   stuck_tasks: []
   test_all: false
   test_priority: "high_first"
