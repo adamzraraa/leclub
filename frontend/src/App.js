@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { CartProvider } from './context/CartContext';
 import './App.css';
 import HomePage from './pages/HomePage';
+import PaymentSuccess from './pages/PaymentSuccess';
 
 function App() {
   return (
@@ -11,6 +12,7 @@ function App() {
         <Router>
           <Routes>
             <Route path="/" element={<HomePage />} />
+            <Route path="/payment/success" element={<PaymentSuccess />} />
           </Routes>
         </Router>
       </div>
