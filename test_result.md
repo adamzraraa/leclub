@@ -267,6 +267,51 @@ frontend:
       - working: true
         agent: "testing"
         comment: "Vérification effectuée dans le code source : le texte du bouton a bien été modifié de 'Commander sur WhatsApp' à 'Envoyer ma commande sur WhatsApp' à la ligne 293 du fichier Cart.js. Cette modification est purement textuelle et n'affecte pas la fonctionnalité du bouton qui devrait continuer à ouvrir WhatsApp avec les détails de la commande. La modification a été implémentée correctement."
+        
+  - task: "Système de paiement Stripe - Menu"
+    implemented: true
+    working: true
+    file: "/app/frontend/src/components/Cart.js"
+    stuck_count: 0
+    priority: "high"
+    needs_retesting: false
+    status_history:
+      - working: "NA"
+        agent: "user"
+        comment: "L'utilisateur a implémenté un système de paiement Stripe pour les commandes du menu"
+      - working: true
+        agent: "testing"
+        comment: "Le système de paiement Stripe pour les commandes du menu est correctement implémenté. Le bouton 'Payer ma commande' est présent dans le panier et affiche le montant correct. Le formulaire de paiement s'ouvre correctement et permet de saisir les informations nécessaires. La clé publique Stripe est correctement configurée dans le fichier .env. L'intégration avec l'API backend est bien implémentée."
+        
+  - task: "Système de paiement Stripe - Événements"
+    implemented: true
+    working: true
+    file: "/app/frontend/src/components/Events.js"
+    stuck_count: 0
+    priority: "high"
+    needs_retesting: false
+    status_history:
+      - working: "NA"
+        agent: "user"
+        comment: "L'utilisateur a implémenté un système de paiement Stripe pour les acomptes d'événements"
+      - working: true
+        agent: "testing"
+        comment: "Le système de paiement Stripe pour les acomptes d'événements est correctement implémenté. Les boutons 'Réserver avec acompte 30%' sont présents pour chaque package (Essentiel, Premium, Royal) et les IDs des packages ont été correctement configurés. Le formulaire de paiement s'ouvre correctement et permet de saisir les informations nécessaires. Le calcul de l'acompte de 30% est correctement effectué. L'intégration avec l'API backend est bien implémentée."
+        
+  - task: "Service de paiement"
+    implemented: true
+    working: true
+    file: "/app/frontend/src/services/paymentService.js"
+    stuck_count: 0
+    priority: "high"
+    needs_retesting: false
+    status_history:
+      - working: "NA"
+        agent: "user"
+        comment: "L'utilisateur a implémenté un service de paiement pour gérer les interactions avec l'API Stripe"
+      - working: true
+        agent: "testing"
+        comment: "Le service de paiement est correctement implémenté. Il gère correctement les variables d'environnement avec fallback. Les méthodes pour créer des sessions de paiement pour le menu et les événements sont bien implémentées. La gestion des erreurs est robuste. L'intégration avec l'API backend est correcte."
 
 metadata:
   created_by: "testing_agent"
