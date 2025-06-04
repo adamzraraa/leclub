@@ -244,8 +244,9 @@ Merci de me contacter pour finaliser mon événement.`;
 
   const eventPackages = [
     {
+      id: "package_essentiel",
       name: "Package Essentiel",
-      price: "45€/personne",
+      price: 45,
       features: [
         "Menu 3 services",
         "Décoration de base",
@@ -254,27 +255,29 @@ Merci de me contacter pour finaliser mon événement.`;
       ]
     },
     {
+      id: "package_premium",
       name: "Package Premium",
-      price: "65€/personne", 
+      price: 65,
       features: [
         "Menu 5 services",
         "Décoration raffinée",
-        "Service personnalisé",
+        "Service premium",
         "Boissons incluses",
-        "Animations traditionnelles"
+        "Animation musicale"
       ],
       popular: true
     },
     {
+      id: "package_royal",
       name: "Package Royal",
-      price: "95€/personne",
+      price: 95,
       features: [
-        "Menu gastronomique",
+        "Menu gastronomique 7 services",
         "Décoration luxueuse",
-        "Service de conciergerie",
-        "Bar ouvert",
-        "Spectacle andalou",
-        "Photographe inclus"
+        "Service conciergerie",
+        "Boissons premium",
+        "Animations exclusives",
+        "Photographe professionnel"
       ]
     }
   ];
