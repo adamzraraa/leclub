@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Heart, Users, Calendar, Star, Phone, Mail, CheckCircle, AlertCircle, Loader, X, ChevronLeft, ChevronRight } from 'lucide-react';
 import { sendQuoteByEmail, createWhatsAppFallback } from '../services/emailService';
+import PaymentButton from './PaymentButton';
 
 const Events = () => {
   const [formData, setFormData] = useState({
