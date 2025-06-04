@@ -1,8 +1,12 @@
 import { loadStripe } from '@stripe/stripe-js';
 
 // Configuration Stripe
-const stripePromise = loadStripe(process.env.REACT_APP_STRIPE_PUBLIC_KEY);
-const BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
+const getStripePublicKey = () => {
+  return process.env.REACT_APP_STRIPE_PUBLIC_KEY || import.meta.env.REACT_APP_STRIPE_PUBLIC_KEY;
+};
+
+const stripePromise = loadStripe(getStripePublicKey());
+const BACKEND_URL = process.env.REACT_APP_BACKEND_URL || import.meta.env.REACT_APP_BACKEND_URL;
 
 export class PaymentService {
   
