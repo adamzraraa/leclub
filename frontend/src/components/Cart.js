@@ -310,7 +310,7 @@ Merci de confirmer la disponibilité.`;
                       </button>
                     </div>
                   ) : (
-                    {/* Checkout Button - Paiement sécurisé */}
+                    // Checkout Button - Paiement sécurisé
                     <div>
                       <PaymentButton
                         type="menu"
